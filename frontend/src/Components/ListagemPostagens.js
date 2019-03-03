@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 class ListagemPostagens extends Component {
     render() {
         let Postagens = [
-            { id: 0, titulo: 'Categoria 1' },
-            { id: 1, titulo: 'Categoria 2' },
-            { id: 2, titulo: 'Categoria 3' }
+            { id: 0, titulo: 'Postagem 1' },
+            { id: 1, titulo: 'Postagem 2' },
+            { id: 2, titulo: 'Postagem 3' }
         ];
 
         return (
