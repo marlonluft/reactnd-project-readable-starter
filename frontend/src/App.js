@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Style/App.css';
 import Categoria from './Views/Categoria.js'
 import Detalhe from './Views/Detalhe.js'
 import Editar from './Views/Editar.js'
