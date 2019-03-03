@@ -13,7 +13,12 @@ class ListagemCategorias extends Component {
             <div>
                 {
                     Categorias.map((categoria) => (
-                        <Link key={categoria.id} to={'/categoria/'+categoria.id}>{categoria.nome}</Link>
+                        <Link key={categoria.id} to={'/categoria/' + categoria.id}>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                                <i class="material-icons">category</i>
+                                {categoria.nome}
+                            </button>
+                        </Link>
                     ))
                 }
             </div>
