@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Postagem extends Component{
-    render()
-    {
-        return(<div></div>)
-    }
+function Postagem(props) {
+    return (
+        <li>
+            <h3>{props.postagem.titulo}</h3>
+            <span>{props.postagem.dataCriacao}</span>
+            <span>{props.postagem.score}</span>
+        </li>
+    )
 }
 
 export default Postagem

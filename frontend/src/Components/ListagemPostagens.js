@@ -1,11 +1,28 @@
 import React, { Component } from 'react'
+import Postagem from './Postagem.js'
 
 class ListagemPostagens extends Component {
+
     render() {
         let Postagens = [
-            { id: 0, titulo: 'Postagem 1' },
-            { id: 1, titulo: 'Postagem 2' },
-            { id: 2, titulo: 'Postagem 3' }
+            {
+                id: 0,
+                titulo: 'Titulo postagem 0',
+                dataCriacao: new Date().toString(),
+                score: 0
+            },
+            {
+                id: 1,
+                titulo: 'Titulo postagem 1',
+                dataCriacao: new Date().toString(),
+                score: 1
+            },
+            {
+                id: 2,
+                titulo: 'Titulo postagem 2',
+                dataCriacao: new Date().toString(),
+                score: 2
+            },
         ];
 
         return (
@@ -15,7 +32,7 @@ class ListagemPostagens extends Component {
                 <ul>
                     {
                         Postagens.map((postagem) => (
-                            <li key={postagem.id}>{postagem.titulo}</li>
+                            <Postagem key={postagem.id} postagem={postagem} />
                         ))
                     }
                 </ul>
