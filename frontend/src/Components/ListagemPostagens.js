@@ -29,13 +29,23 @@ class ListagemPostagens extends Component {
             <div>
                 <a href="#">Score</a>
                 <a href="#">Data</a>
-                <ul>
-                    {
-                        Postagens.map((postagem) => (
-                            <Postagem key={postagem.id} postagem={postagem} />
-                        ))
-                    }
-                </ul>
+
+                <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                    <thead>
+                        <tr>
+                            <th className="mdl-data-table__cell--non-numeric">Titulo</th>
+                            <th>Score</th>
+                            <th>Data de Criação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            Postagens.map((postagem) => (
+                                <Postagem key={postagem.id} postagem={postagem} />
+                            ))
+                        }
+                    </tbody>
+                </table>
             </div>
         )
     }
