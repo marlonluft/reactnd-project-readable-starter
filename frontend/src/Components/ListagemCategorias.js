@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class ListagemCategorias extends Component {
     render() {
@@ -12,7 +13,7 @@ class ListagemCategorias extends Component {
             <div>
                 {
                     Categorias.map((categoria) => (
-                        <div key={categoria.id}>{categoria.nome}</div>
+                        <Link key={categoria.id} to={'/categoria/'+categoria.id}>{categoria.nome}</Link>
                     ))
                 }
             </div>
