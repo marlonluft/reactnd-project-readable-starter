@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Categoria extends Component{
-    render()
-    {
-        return(<div></div>)
-    }
+function Categoria({ match }) {
+    return (
+      <div>
+        Categoria: {match.params.id}
+      </div>
+    );
 }
 
 export default Categoria

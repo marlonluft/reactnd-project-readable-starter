@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Detalhe extends Component{
-    render()
-    {
-        return(<div></div>)
-    }
+function Detalhe({ match }) {
+    return (
+      <div>
+        Detalhe: {match.params.id}
+      </div>
+    );
 }
 
 export default Detalhe

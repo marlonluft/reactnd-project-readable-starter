@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Editar extends Component{
-    render()
-    {
-        return(<div></div>)
-    }
+function Editar({ match }) {
+    return (
+      <div>
+        Editar: {match.params.id}
+      </div>
+    );
 }
 
 export default Editar

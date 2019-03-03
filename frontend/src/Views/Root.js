@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Root extends Component{
-    render()
-    {
-        return(<div></div>)
-    }
+function Root({ match }) {
+    return(<div>Root</div>)
 }
 
 export default Root
