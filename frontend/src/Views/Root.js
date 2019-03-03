@@ -8,7 +8,12 @@ function Root() {
         <div>
             <ListagemCategorias />
             <ListagemPostagens />
-            <Link to='/editar'>+Novo</Link>
+            
+            <Link to='/editar'>
+                <button className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect">
+                    <i className="material-icons">add</i>
+                </button>
+            </Link>
         </div>
     )
 }
