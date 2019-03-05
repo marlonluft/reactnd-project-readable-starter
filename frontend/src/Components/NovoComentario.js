@@ -28,8 +28,6 @@ class NovoComentario extends Component {
                 author: nome,
                 parentId: this.props.postId
             }))
-
-            this.forceUpdate()
         }
     }
 

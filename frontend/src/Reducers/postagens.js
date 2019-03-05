@@ -8,7 +8,8 @@ import {
 } from '../Actions/postagem'
 
 import {
-  SOMAR_COMENTARO
+  ADD_COMENTARIO,
+  REMOVE_COMENTARIO
 } from '../Actions/comentario'
 
 import {
@@ -40,15 +41,22 @@ export function postagens(state = [], action) {
 
         return post;
       })
-    case SOMAR_COMENTARO:
+    case ADD_COMENTARIO:
       return state.map((post) => {
-        if (post.id === action.id) {
-          post.commentCount = post.commentCount + (action.acrescentar ? 1 : -1);
+        if (post.id === action.comentario.parentId) {
+          post.commentCount = post.commentCount + 1;
         }
 
         return post;
       })
+    case REMOVE_COMENTARIO:
+      return state.map((post) => {
+        if (post.id === action.parentId) {
+          post.commentCount = post.commentCount - 1;
+        }
 
+        return post;
+      })
 
     default:
       return state
@@ -59,9 +67,14 @@ export function postagem(state = [], action) {
   switch (action.type) {
     case GET_POSTAGEM:
       return action.postagem
-    case SOMAR_COMENTARO:
-      if (state.id === action.id) {
-        state.commentCount = state.commentCount + (action.acrescentar ? 1 : -1);
+    case ADD_COMENTARIO:
+      if (state.id === action.comentario.parentId) {
+        state.commentCount = state.commentCount + 1;
+      }
+      return state;
+    case REMOVE_COMENTARIO:
+      if (state.id === action.parentId) {
+        state.commentCount = state.commentCount - 1;
       }
       return state;
     default:

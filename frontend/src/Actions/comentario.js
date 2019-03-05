@@ -3,7 +3,6 @@ import API from '../Util/API'
 export const ADD_COMENTARIO= 'ADD_COMENTARIO'
 export const REMOVE_COMENTARIO = 'REMOVE_COMENTARIO'
 export const GET_COMENTARIOS = 'GET_COMENTARIOS'
-export const SOMAR_COMENTARO = 'SOMAR_COMENTARO'
 
 function getComentarios (comentarios) {
   return {
@@ -19,19 +18,11 @@ function addComentario (comentario) {
   }
 }
 
-function removeComentario (id) {
+function removeComentario (id, parentId) {
   return {
     type: REMOVE_COMENTARIO,
     id,
-  }
-}
-
-function somarComentario(acrescentar, postId)
-{
-  return {
-  type: SOMAR_COMENTARO,
-  id: postId,
-  acrescentar
+    parentId,
   }
 }
 
@@ -42,9 +33,7 @@ export function handleAddComentario (objeto) {
 
     return API.postComment(objeto)
       .then(() => {
-        dispatch(addComentario(objeto))
-        dispatch(somarComentario(true, objeto.parentId))
-        
+        dispatch(addComentario(objeto))        
       })
       .catch((e) => alert('Ocorreu um erro ao adicionar o comentario. Tente novamente.'))
   }
@@ -52,13 +41,10 @@ export function handleAddComentario (objeto) {
 
 export function handleDeleteComentario (comentario) {
   return (dispatch) => {
-    dispatch(removeComentario(comentario.id))
-    dispatch(somarComentario(false, comentario.parentId))
-
+    dispatch(removeComentario(comentario.id, comentario.parentId))
     return API.deleteComentario(comentario.id)
       .catch((e) => {
         dispatch(addComentario(comentario))
-        dispatch(somarComentario(true, comentario.parentId))
         alert('ocorreu um erro ao deletar o comentario. Tente novamente.')
       })
   }
