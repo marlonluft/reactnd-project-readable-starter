@@ -1,0 +1,25 @@
+.card-comentario{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.card-comentario .mdl-card{
+    width: 100%;
+    min-height: 80px;
+}
+
+.card-comentario .mdl-card__title{
+    font-size: 20px;
+    line-height: 35px;
+    padding: 16px 16px 0px 16px;
+}
+
+.card-comentario .mdl-card__supporting-text{
+    padding: 0px 16px 0px 16px;
+}
+
+.card-subtitulo{
+    font-size: 12px;    
+    margin-left: 10px;
+    line-height: 35px;
+}
