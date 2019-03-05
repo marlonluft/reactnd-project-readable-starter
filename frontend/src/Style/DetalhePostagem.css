@@ -1,0 +1,10 @@
+.margemEstatistica{
+    margin-left: calc(5% - 16px);
+}
+
+.mdl-dialog__subtitle{
+    padding: 24px 24px 0;
+    margin: 0;
+    font-size: 1.5rem;
+    color: #5d5d5d;
+}
