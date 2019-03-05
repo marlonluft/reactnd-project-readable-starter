@@ -3,6 +3,7 @@ import API from '../Util/API'
 export const ADD_COMENTARIO= 'ADD_COMENTARIO'
 export const REMOVE_COMENTARIO = 'REMOVE_COMENTARIO'
 export const GET_COMENTARIOS = 'GET_COMENTARIOS'
+export const POST_COMENTARIO = 'POST_COMENTARIO'
 
 function getComentarios (comentarios) {
   return {
@@ -23,6 +24,14 @@ function removeComentario (id, parentId) {
     type: REMOVE_COMENTARIO,
     id,
     parentId,
+  }
+}
+
+function votarComentario(acrescentar, id) {
+  return {
+    type: POST_COMENTARIO,
+    id,
+    acrescentar
   }
 }
 
@@ -58,6 +67,18 @@ export function handleGetComentario (postId) {
       })
       .catch((e) => {
         alert('Ocorreu um erro ao consultar os comentarios. Tente novamente.')
+      })
+  }
+}
+
+export function handlePostComentario (acrescentar, id) {
+  return (dispatch) => {
+    dispatch(votarComentario(acrescentar, id))
+
+    return API.voteComentario(acrescentar, id)
+      .catch((e) => {
+        dispatch(votarComentario(!acrescentar, id))
+        alert('ocorreu um erro ao votar no comentário. Tente novamente.')
       })
   }
 }

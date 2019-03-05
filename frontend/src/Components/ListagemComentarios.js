@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import Comentario from './Comentario'
+import { handlePostComentario } from '../Actions/comentario'
 
 class ListagemComentarios extends Component {
 
     onVote = (acrescentar, comentarioId) => {
-        //this.props.dispatch(handlePostPostagem(acrescentar, comentarioId))
+        this.props.dispatch(handlePostComentario(acrescentar, comentarioId))
     }
 
     onUpdate = (comentario) => {

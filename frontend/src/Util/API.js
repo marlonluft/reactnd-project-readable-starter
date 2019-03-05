@@ -150,9 +150,27 @@ const API = {
             })
     },
 
-    // Deleta uma postagem
+    // Vota em uma postagem
     votePostagem: (acrescentar, id) => {
         return fetch('http://localhost:3001/posts/' + id,
+            {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'udacity'
+                },
+                body: JSON.stringify({ option: (acrescentar ? 'upVote' : 'downVote') })
+            }).then((res) => {
+                return res.json();
+            }).catch((res) => {
+                return res;
+            })
+    },
+
+    // Vota em um comentario
+    voteComentario: (acrescentar, comentarioId) => {
+        return fetch('http://localhost:3001/comments/' + comentarioId,
             {
                 method: 'POST',
                 headers: {

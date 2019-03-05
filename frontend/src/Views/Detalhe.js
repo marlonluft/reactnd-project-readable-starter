@@ -58,7 +58,7 @@ class Detalhe extends Component {
               <h3>Comentários</h3>
               <NovoComentario postId={postagem.id} dispatch={this.props.dispatch} />
               <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
-                <ListagemComentarios lista={comentarios} />
+                <ListagemComentarios lista={comentarios} dispatch={this.props.dispatch} />
               </div>
             </div>
             <Link to={'/'}>Voltar</Link>
