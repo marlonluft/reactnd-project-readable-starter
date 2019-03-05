@@ -11,12 +11,31 @@ To get started developing right away:
 * Install and start the API server
     - `cd api-server`
     - `npm install`
-    - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
+    - `npm start`
+* In another terminal window, install and start the front-end
     - `cd frontend`
+    - `npm install`
     - `npm start`
 
 ## API Server
 
 Information about the API server and how to use it can be found in its [README file](api-server/README.md).
+
+## Front-End
+
+The front end project was developed with Reac.js + Redux, combined with material design from google.
+
+## Front-End Packages
+
+* The front-end project contains the follow packages:
+    - `react (16.8.3)`
+    - `redux (4.0.1)`
+    - `react-dom (16.8.3)`
+    - `react-redux (6.0.1)`
+    - `redux-thunk (2.3.0)`
+    - `react-router-dom (4.3.1)`
+    - `react-scripts (2.1.5)`
+    - `moment (2.24.0)`
+    - `react-moment (0.8.4)`
+    
+    
