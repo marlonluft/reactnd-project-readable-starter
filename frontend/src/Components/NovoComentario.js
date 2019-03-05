@@ -12,13 +12,13 @@ class NovoComentario extends Component {
         if (nome.length === 0) {
             alert('Favor informar o seu nome.');
         }
-        else if (nome.length <= 3 || nome.length > 50) {
+        else if (nome.length < 3 || nome.length > 50) {
             alert('Favor informar um nome entre 3 a 50 caracteres.');
         }
         else if (comentario.length === 0) {
             alert('Favor informar o comentário.');
         }
-        else if (comentario.length <= 5 || comentario.length > 300) {
+        else if (comentario.length < 5 || comentario.length > 300) {
             alert('Favor informar um comentário entre 5 a 300 caracteres.');
         }
         else {
