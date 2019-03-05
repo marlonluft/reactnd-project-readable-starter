@@ -41,22 +41,6 @@ export function postagens(state = [], action) {
 
         return post;
       })
-    case ADD_COMENTARIO:
-      return state.map((post) => {
-        if (post.id === action.comentario.parentId) {
-          post.commentCount = post.commentCount + 1;
-        }
-
-        return post;
-      })
-    case REMOVE_COMENTARIO:
-      return state.map((post) => {
-        if (post.id === action.parentId) {
-          post.commentCount = post.commentCount - 1;
-        }
-
-        return post;
-      })
 
     default:
       return state
