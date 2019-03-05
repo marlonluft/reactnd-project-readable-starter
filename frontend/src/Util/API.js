@@ -156,9 +156,11 @@ const API = {
             {
                 method: 'POST',
                 headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
                     'Authorization': 'udacity'
                 },
-                body: acrescentar ? 'upVote' : 'downVote'
+                body: JSON.stringify({ option: (acrescentar ? 'upVote' : 'downVote') })
             }).then((res) => {
                 return res.json();
             }).catch((res) => {
