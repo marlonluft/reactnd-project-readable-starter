@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Comentario from './Comentario'
-import { handlePostComentario } from '../Actions/comentario'
+import { handlePostComentario, handleDeleteComentario } from '../Actions/comentario'
 
 class ListagemComentarios extends Component {
 
@@ -13,7 +13,7 @@ class ListagemComentarios extends Component {
     }
 
     onDelete = (comentario) => {
-
+        this.props.dispatch(handleDeleteComentario(comentario))
     }
 
     render() {

@@ -184,7 +184,22 @@ const API = {
             }).catch((res) => {
                 return res;
             })
-    }
+    },
+
+    // Deleta uma postagem
+    deleteComentario: (id) => {
+        return fetch('http://localhost:3001/comments/' + id,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': 'udacity'
+                }
+            }).then((res) => {
+                return res.json();
+            }).catch((res) => {
+                return res;
+            })
+    },
 
 
 }
