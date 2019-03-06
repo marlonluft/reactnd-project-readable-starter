@@ -2,7 +2,8 @@ import {
   ADD_COMENTARIO,
   REMOVE_COMENTARIO,
   GET_COMENTARIOS,
-  POST_COMENTARIO
+  POST_COMENTARIO,
+  PUT_COMENTARIO
 } from '../Actions/comentario'
 
 
@@ -18,6 +19,14 @@ export default function comentarios(state = [], action) {
       return state.map((comentario) => {
         if (comentario.id === action.id) {
           comentario.voteScore = comentario.voteScore + (action.acrescentar ? 1 : -1);
+        }
+
+        return comentario;
+      })
+    case PUT_COMENTARIO:
+      return state.map((comentario) => {
+        if (comentario.id === action.id) {
+          comentario.body = action.novoComentario;
         }
 
         return comentario;

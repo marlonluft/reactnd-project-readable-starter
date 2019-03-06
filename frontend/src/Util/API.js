@@ -201,6 +201,24 @@ const API = {
             })
     },
 
+    // Atualiza um comentário
+    putComentario: (novoComentario, timestamp, comentarioId) => {
+        return fetch('http://localhost:3001/comments/' + comentarioId,
+            {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'udacity'
+                },
+                body: JSON.stringify({ body: novoComentario, timestamp })
+            }).then((res) => {
+                return res.json();
+            }).catch((res) => {
+                return res;
+            })
+    },
+
 
 }
 

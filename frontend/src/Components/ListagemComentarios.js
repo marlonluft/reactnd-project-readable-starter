@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Comentario from './Comentario'
-import { handlePostComentario, handleDeleteComentario } from '../Actions/comentario'
+import { handlePostComentario, handleDeleteComentario, handleAtualizarComentario } from '../Actions/comentario'
 
 class ListagemComentarios extends Component {
 
@@ -8,8 +8,8 @@ class ListagemComentarios extends Component {
         this.props.dispatch(handlePostComentario(acrescentar, comentarioId))
     }
 
-    onUpdate = (comentario) => {
-
+    onUpdate = (novoComentario, comentarioId) => {
+        this.props.dispatch(handleAtualizarComentario(novoComentario, +new Date, comentarioId))
     }
 
     onDelete = (comentario) => {

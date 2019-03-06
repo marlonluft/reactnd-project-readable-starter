@@ -4,6 +4,7 @@ export const ADD_COMENTARIO= 'ADD_COMENTARIO'
 export const REMOVE_COMENTARIO = 'REMOVE_COMENTARIO'
 export const GET_COMENTARIOS = 'GET_COMENTARIOS'
 export const POST_COMENTARIO = 'POST_COMENTARIO'
+export const PUT_COMENTARIO = 'PUT_COMENTARIO'
 
 function getComentarios (comentarios) {
   return {
@@ -32,6 +33,14 @@ function votarComentario(acrescentar, id) {
     type: POST_COMENTARIO,
     id,
     acrescentar
+  }
+}
+
+function atualizarComentario(novoComentario, id) {
+  return {
+    type: PUT_COMENTARIO,
+    id,
+    novoComentario
   }
 }
 
@@ -80,5 +89,15 @@ export function handlePostComentario (acrescentar, id) {
         dispatch(votarComentario(!acrescentar, id))
         alert('ocorreu um erro ao votar no comentário. Tente novamente.')
       })
+  }
+}
+
+export function handleAtualizarComentario (novoComentario, timestamp, comentarioId) {
+  return (dispatch) => {
+    return API.putComentario(novoComentario, timestamp, comentarioId)
+      .then(() => {
+        dispatch(atualizarComentario(novoComentario, comentarioId))
+      })
+      .catch((e) => alert('Ocorreu um erro ao atualizar o comentario. Tente novamente.'))
   }
 }
