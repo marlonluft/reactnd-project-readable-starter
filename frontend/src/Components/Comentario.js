@@ -94,7 +94,7 @@ class Comentario extends Component {
                                             <button className="mdl-button mdl-js-button mdl-button--icon" onClick={() => this.onEdit()}>
                                                 <i className="material-icons" style={{ fontSize: '18px' }}>edit</i>
                                             </button>
-                                            <button className="mdl-button mdl-js-button mdl-button--icon" onClick={() => this.onDelete(comentario)}>
+                                            <button className="mdl-button mdl-js-button mdl-button--icon" onClick={() => onDelete(comentario)}>
                                                 <i className="material-icons" style={{ fontSize: '18px' }}>delete</i>
                                             </button>
                                         </div>
