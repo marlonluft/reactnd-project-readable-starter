@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Moment from 'react-moment';
 import '../Style/Comentario.css'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 
 class Comentario extends Component {
 
@@ -52,58 +55,47 @@ class Comentario extends Component {
         const { editMode, novoComentario } = this.state
 
         return (
-            <li className="card-comentario mdl-list__item ">
-                <div className="mdl-card">
-                    <div className="mdl-card__title">
-                        <h2 className="mdl-card__title-text">
-                            {comentario.author}
-                            <span className="card-subtitulo"><Moment date={comentario.timestamp} format="DD/MM/YYYY HH:mm:ss" /></span>
-                        </h2>
-                    </div>
-                    <div className="mdl-card__supporting-text">
+            <Card className="margemTop">
+                <Card.Body>
+                    <Card.Title>
                         {
                             editMode ? (
-                                <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input className="mdl-textfield__input" type="text" id={"txtComentario" + comentario.id} value={novoComentario} onChange={(event) => this.onComentarioChange(event.target.value)} />
-                                    <label className="mdl-textfield__label" htmlFor={"txtComentario" + comentario.id}>Digite o comentário</label>
-                                </div>
-                            ) : (
+                                <Form.Control type="text" placeholder="Digite o comentário" id={"txtComentario" + comentario.id} value={novoComentario} onChange={(event) => this.onComentarioChange(event.target.value)} />
+                            ) :
+                                (
                                     comentario.body
                                 )
                         }
+                    </Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">
+                        {comentario.author}
+                        <span className="card-subtitulo margemLeft dataComentario"><Moment date={comentario.timestamp} format="DD/MM/YYYY HH:mm:ss" /></span>
+                    </Card.Subtitle>
+                    <div style={{ display: 'inline-block' }}>
+                        <i className="fas fa-arrow-up pointer" onClick={() => onVote(true, comentario.id)}></i>
+                        <i className="fas fa-arrow-down pointer margemLeft" onClick={() => onVote(false, comentario.id)}></i>
+                        <b className="margemLeft">{comentario.voteScore}</b>
                     </div>
-                    <div className="mdl-card__actions mdl-card--border">
-                        <div style={{ float: 'left' }}>
-                            <i className="material-icons" onClick={() => onVote(true, comentario.id)}>arrow_drop_up</i>
-                            <i className="material-icons" onClick={() => onVote(false, comentario.id)}>arrow_drop_down</i>
-                            <b>{comentario.voteScore}</b>
-                        </div>
-                        <div style={{ float: 'right' }}>
-                            {
-                                editMode ? (
-                                    <div>
-                                        <button className="mdl-button mdl-js-button mdl-button--icon" onClick={() => this.onSave(novoComentario, comentario.id)}>
-                                            <i className="material-icons" style={{ fontSize: '18px' }}>save</i>
-                                        </button>
-                                        <button className="mdl-button mdl-js-button mdl-button--icon" onClick={() => this.onCancel()}>
-                                            <i className="material-icons" style={{ fontSize: '18px' }}>cancel</i>
-                                        </button>
-                                    </div>
-                                ) : (
-                                        <div>
-                                            <button className="mdl-button mdl-js-button mdl-button--icon" onClick={() => this.onEdit()}>
-                                                <i className="material-icons" style={{ fontSize: '18px' }}>edit</i>
-                                            </button>
-                                            <button className="mdl-button mdl-js-button mdl-button--icon" onClick={() => onDelete(comentario)}>
-                                                <i className="material-icons" style={{ fontSize: '18px' }}>delete</i>
-                                            </button>
-                                        </div>
-                                    )
-                            }
-                        </div>
+
+                    <div style={{ display: 'inline-block', position: 'absolute', right: '10px' }}>
+                        {
+                            editMode ? (
+                                <span>
+                                    <Button className="margemLeft" onClick={() => this.onSave(novoComentario, comentario.id)} variant="outline-primary"><i className="fas fa-save"></i></Button>
+                                    <Button className="margemLeft" onClick={() => this.onCancel()} variant="outline-secondary"><i className="fas fa-times"></i></Button>
+                                </span>
+                            ) :
+                                (
+                                    <span>
+                                        <Button className="margemLeft" onClick={() => this.onEdit()} variant="outline-primary"><i className="fas fa-pen"></i></Button>
+                                        <Button className="margemLeft" onClick={() => onDelete(comentario)} variant="outline-danger"><i className="fas fa-trash-alt"></i></Button>
+                                    </span>
+                                )
+                        }
                     </div>
-                </div>
-            </li>)
+                </Card.Body>
+            </Card>
+        )
     }
 }
 

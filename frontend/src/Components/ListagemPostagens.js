@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import Postagem from './Postagem.js'
-import { handleDeletePostagem, handlePostPostagem, handleSortPostagens } from '../Actions/postagem'
+import { handleDeletePostagem, handlePostPostagem } from '../Actions/postagem'
+import Table from 'react-bootstrap/Table'
 
 class ListagemPostagens extends Component {
-
-    state = {
-        ordemCrescente: true,
-        ordemColuna: 'voteScore'
-    }
 
     onDelete = (postagem) => {
         var resposta = window.confirm("Confirma a exclusão da postagem '" + postagem.title + "'?")
@@ -20,32 +16,17 @@ class ListagemPostagens extends Component {
         this.props.dispatch(handlePostPostagem(acrescentar, postagemId))
     }
 
-    onSort = (coluna) => {
-
-        var ordemCrescenteNova = coluna === this.state.ordemColuna ?  !this.state.ordemCrescente : true
-
-        this.setState({
-            ordemCrescente: ordemCrescenteNova,
-            ordemColuna: coluna
-        })
-
-        this.props.dispatch(handleSortPostagens(ordemCrescenteNova, coluna))
-    }
-
     render() {
 
         const { lista } = this.props
-        
+
         return (
             <div>
-                <a href="#" onClick={() => this.onSort('voteScore')}>Score</a>
-                <a href="#" onClick={() => this.onSort('timestamp')}>Data</a>
-
-                <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <Table striped bordered hover size="sm">
                     <thead>
                         <tr>
                             <th>&nbsp;</th>
-                            <th className="mdl-data-table__cell--non-numeric">Titulo</th>
+                            <th>Titulo</th>
                             <th>Score</th>
                             <th>Data de Criação</th>
                             <th>&nbsp;</th>
@@ -63,7 +44,7 @@ class ListagemPostagens extends Component {
                                 )
                         }
                     </tbody>
-                </table>
+                </Table>
             </div>
         )
     }

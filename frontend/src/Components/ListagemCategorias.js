@@ -1,24 +1,31 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 class ListagemCategorias extends Component {
+
     render() {
 
-        const { lista } = this.props
+        const { lista, route, alterarCategoria } = this.props
 
         return (
-            <div style={{textAlign: 'center'}}>
-                {
-                    lista.map((categoria) => (
-                        <Link key={categoria.name} to={'/categoria/' + categoria.name} style={{marginLeft: '10px'}}>
-                            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
-                                <i className="material-icons">category</i>
-                                {categoria.name}
-                            </button>
-                        </Link>
-                    ))
-                }
-            </div>
+            <Card body style={{marginTop: '10px'}}>
+                <Card.Title>Categorias</Card.Title>
+
+                <ListGroup as="ul">
+                    <ListGroup.Item key="Todas" as="li" active={route === "/"} onClick={() => alterarCategoria('/')}>
+                            Todas
+                    </ListGroup.Item>
+                    {
+                        lista.map((categoria) => (
+                            <ListGroup.Item key={categoria.name} as="li" active={route === "/CATEGORIA/" + categoria.name.toUpperCase()} onClick={() => alterarCategoria('/categoria/' + categoria.name)}>
+                                    {categoria.name}
+                            </ListGroup.Item>
+                        ))
+                    }
+                </ListGroup>
+            </Card>
         )
     }
 }

@@ -2,18 +2,10 @@ import API from '../Util/API'
 
 export const ADD_POSTAGEM = 'ADD_POSTAGEM'
 export const REMOVE_POSTAGEM = 'REMOVE_POSTAGEM'
-export const GET_POSTAGENS = 'GET_POSTAGENS'
 export const GET_POSTAGEM = 'GET_POSTAGEM'
 export const PUT_POSTAGEM = 'PUT_POSTAGEM'
 export const POST_POSTAGEM = 'POST_POSTAGEM'
 export const SORT_POSTAGENS = 'SORT_POSTAGENS'
-
-function getPostagens (postagens) {
-  return {
-    type: GET_POSTAGENS,
-    postagens,
-  }
-}
 
 function getPostagem (postagem) {
   return {
@@ -93,18 +85,6 @@ export function handleDeletePostagem (postagem) {
       .catch((e) => {
         dispatch(addPostagem(postagem))
         alert('ocorreu um erro ao deletar a postagem. Tente novamente.')
-      })
-  }
-}
-
-export function handleGetPostagens (categoria) {
-  return (dispatch) => {
-    return API.fetchPostagensCategoria(categoria)
-      .then((postagens) => {
-        dispatch(getPostagens(postagens))
-      })
-      .catch((e) => {
-        alert('Ocorreu um erro ao consultar as postagens por categoria. Tente novamente.')
       })
   }
 }

@@ -10,11 +10,11 @@ function receiveData (postagens, categorias) {
   }
 }
 
-export function handleInitialData () {
+export function handleInitialData (categoria) {
   return (dispatch) => {
     return Promise.all([
-      API.fetchPostagens(),
-      API.fetchCategorias()
+      categoria === null ? API.fetchPostagens() : API.fetchPostagensCategoria(categoria),
+      API.fetchCategorias()      
     ]).then(([ postagens, categorias ]) => {
       dispatch(receiveData(postagens, categorias))
     })

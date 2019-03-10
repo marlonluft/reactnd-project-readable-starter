@@ -2,7 +2,6 @@ import {
   ADD_POSTAGEM,
   REMOVE_POSTAGEM,
   GET_POSTAGEM,
-  GET_POSTAGENS,
   PUT_POSTAGEM,
   POST_POSTAGEM,
   SORT_POSTAGENS,
@@ -23,7 +22,6 @@ export function postagens(state = [], action) {
       return state.concat([action.postagem])
     case REMOVE_POSTAGEM:
       return state.filter((postagem) => postagem.id !== action.id)
-    case GET_POSTAGENS:
     case RECEIVE_DATA:
       return action.postagens
     case PUT_POSTAGEM:

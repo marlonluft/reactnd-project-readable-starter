@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import { handleAddComentario } from '../Actions/comentario'
+import '../Style/Comentario.css'
+
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 class NovoComentario extends Component {
 
@@ -49,24 +54,23 @@ class NovoComentario extends Component {
         const { nome, comentario } = this.state
 
         return (
-            <div className="centeritems mdl-grid">
-                <div className="mdl-layout-spacer"></div>
-                <div className="mdl-cell mdl-cell--7-col">
+            <Card className="novoComentario">
+                <Card.Header>Novo Comentário</Card.Header>
+                <Card.Body>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Control type="text" placeholder="Digite seu nome" value={nome} onChange={(event) => this.onNomeChange(event.target.value)} />
+                        </Form.Group>
 
-                    <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input className="mdl-textfield__input" type="text" id="txtNome" value={nome} onChange={(event) => this.onNomeChange(event.target.value)} />
-                        <label className="mdl-textfield__label" htmlFor="txtNome">Digite seu nome</label>
-                    </div>
-
-                    <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style={{ width: '100%' }}>
-                        <textarea className="mdl-textfield__input" type="text" rows="3" id="txtComentario" value={comentario} onChange={(event) => this.onComentarioChange(event.target.value)}></textarea>
-                        <label className="mdl-textfield__label" htmlFor="txtComentario">Digite seu comentário</label>
-                    </div>
-
-                    <button style={{ float: 'right' }} className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={() => this.EnviarComentario(nome, comentario)}>Enviar</button>
-                </div>
-                <div className="mdl-layout-spacer"></div>
-            </div>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Control type="text" rows="3" placeholder="Digite seu comentário" value={comentario} onChange={(event) => this.onComentarioChange(event.target.value)} />
+                        </Form.Group>
+                        <Button variant="primary" type="submit" onClick={() => this.EnviarComentario(nome, comentario)}>
+                            Enviar
+                </Button>
+                    </Form>
+                </Card.Body>
+            </Card>
         )
     }
 }

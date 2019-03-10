@@ -1,25 +1,19 @@
-.card-comentario{
-    padding-top: 0px;
-    padding-bottom: 0px;
+.novoComentario {
+    width: 18rem;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
 }
 
-.card-comentario .mdl-card{
-    width: 100%;
-    min-height: 80px;
+.margemLeft{
+    margin-left: 5px;
 }
 
-.card-comentario .mdl-card__title{
-    font-size: 20px;
-    line-height: 35px;
-    padding: 16px 16px 0px 16px;
+.dataComentario{
+  font-size: 12px;
 }
 
-.card-comentario .mdl-card__supporting-text{
-    padding: 0px 16px 0px 16px;
-}
-
-.card-subtitulo{
-    font-size: 12px;    
-    margin-left: 10px;
-    line-height: 35px;
+.margemTop{
+  margin-top: 10px;
 }

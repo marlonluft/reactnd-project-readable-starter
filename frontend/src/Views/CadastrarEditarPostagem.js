@@ -5,6 +5,10 @@ import { handleGetPostagemCB, handleAtualizarPostagem, handleAddPostagem } from 
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import Card from 'react-bootstrap/Card'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 class Editar extends Component {
 
   state = {
@@ -104,52 +108,45 @@ class Editar extends Component {
 
     return (
       <div>
-        <div className="centeritems mdl-grid">
-          <div className="mdl-layout-spacer"></div>
-          <div className="mdl-cell">
+        <h2>{typeof this.props.match.params.id === 'undefined' ? 'Nova Postagem' : 'Alterar Postagem'}</h2>
+        <Card body>
+          <Form>
+            <Form.Group controlId="txtTitulo">
+              <Form.Label>Titulo</Form.Label>
+              <Form.Control type="text" placeholder="Digite um título" value={title} onChange={(event) => this.onTituloChange(event.target.value)} />
+            </Form.Group>
 
-            <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input className="mdl-textfield__input" type="text" id="txtTitulo" value={title} onChange={(event) => this.onTituloChange(event.target.value)} />
-              <label className="mdl-textfield__label" htmlFor="txtTitulo">Titulo</label>
-            </div>
+            <Form.Group controlId="txtAutor">
+              <Form.Label>Autor</Form.Label>
+              <Form.Control type="text" placeholder="Digite um autor" disabled={id !== null} value={author} onChange={(event) => this.onAutorChange(event.target.value)} />
+            </Form.Group>
 
-            <br />
+            <Form.Group controlId="txtConteudo">
+              <Form.Label>Conteúdo</Form.Label>
+              <Form.Control type="text" rows="3" placeholder="Digite um conteúdo" value={body} onChange={(event) => this.onConteudoChange(event.target.value)} />
+            </Form.Group>
 
-            <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input className="mdl-textfield__input" type="text" id="txtAutor" disabled={id !== null} value={author} onChange={(event) => this.onAutorChange(event.target.value)} />
-              <label className="mdl-textfield__label" htmlFor="txtAutor">Autor</label>
-            </div>
-
-            <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style={{ width: '100%' }}>
-              <textarea className="mdl-textfield__input" type="text" rows="3" id="txtComentario" value={body} onChange={(event) => this.onConteudoChange(event.target.value)}></textarea>
-              <label className="mdl-textfield__label" htmlFor="txtComentario">Conteúdo</label>
-            </div>
-
-            <span>
-              <b>Categoria:</b>
-              <div className="mdl-grid">
+            <Form.Group controlId="selectCategoria">
+              <Form.Label>Categoria</Form.Label>
+              <Form.Control as="select" onChange={(e) => this.onCategoriaChange(e.currentTarget.value)} disabled={id !== null} value={category}>
                 {
                   categorias.map((categoria) => (
-                    <div key={categoria.name} className="mdl-cell mdl-cell--1-col mdl-cell--1-offset">
-                      <label className="mdl-radio mdl-js-radio mdl-js-ripple-effect" >
-                        <input type="radio" itemID={'option' + categoria.name} className="mdl-radio__button" name="options"
-                          value={categoria.name}
-                          checked={categoria.name === category}
-                          onChange={(e) => this.onCategoriaChange(e.currentTarget.value)}
-                          disabled={id !== null}
-                        />
-                        <span className="mdl-radio__label" htmlFor={'option' + categoria.name}>{categoria.name}</span>
-                      </label>
-                    </div>
+                    <option key={categoria.name} value={categoria.name}>{categoria.name}</option>
                   ))
                 }
-              </div>
-            </span>
-            <Link to={'/'}>Voltar</Link>
-            <button style={{ float: 'right' }} className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={() => this.Salvar(title, author, body, category, id)}>Salvar</button>
-          </div>
-          <div className="mdl-layout-spacer"></div>
-        </div>
+
+              </Form.Control>
+            </Form.Group>
+
+
+            <Button variant="primary" type="submit" onClick={() => this.Salvar(title, author, body, category, id)}>
+              Salvar
+          </Button>
+
+          </Form>
+        </Card>
+
+        <Link to={'/'}>Voltar</Link>
       </div>
     )
   }

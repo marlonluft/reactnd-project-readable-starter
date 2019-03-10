@@ -8,6 +8,8 @@ import { handleGetPostagem } from '../Actions/postagem'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import Card from 'react-bootstrap/Card'
+
 class Detalhe extends Component {
 
   componentDidMount() {
@@ -15,19 +17,9 @@ class Detalhe extends Component {
     this.props.dispatch(handleGetPostagem(this.props.match.params.id))
   }
 
-  RenderizarChips = (icone, conteudo, contemMargem) => {
-
-    let className = 'mdl-cell mdl-cell--2-col ' + (contemMargem ? 'margemEstatistica' : '');
-
+  RenderizarChips = (icone, conteudo) => {
     return (
-      <div className={className}>
-        <span className="mdl-chip mdl-chip--contact">
-          <span className="mdl-chip__contact mdl-color--teal mdl-color-text--white">
-            <i className="material-icons" style={{ verticalAlign: 'middle', fontSize: '18px' }}>{icone}</i>
-          </span>
-          <span className="mdl-chip__text">{conteudo}</span>
-        </span>
-      </div>
+      <span className="margemLeft"><i className={"fas " + icone}></i>{conteudo}</span>
     );
   }
 
@@ -40,31 +32,28 @@ class Detalhe extends Component {
 
     return (
       <div>
-        <div className="centeritems mdl-grid">
-          <div className="mdl-layout-spacer"></div>
-          <div className="mdl-cell">
-            <h4>{postagem.title} - {postagem.category}</h4>
-            <span>{postagem.author}</span>
-            <div>
-              <p>
-                {postagem.body}
-              </p>
-              <div className="mdl-grid" style={{ padding: 0 }}>
-                {this.RenderizarChips(postagem.voteScore === 0 ? 'thumbs_up_down' : postagem.voteScore > 0 ? 'thumb_up' : 'thumb_down', postagem.voteScore, false)}
-                {this.RenderizarChips('comment', postagem.commentCount, true)}
-                {this.RenderizarChips('calendar_today', <Moment date={postagem.timestamp} format="DD/MM/YYYY HH:mm:ss" />, true)}
-              </div>
-              <hr />
-              <h3>Comentários</h3>
-              <NovoComentario postId={postagem.id} dispatch={this.props.dispatch} />
-              <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
-                <ListagemComentarios lista={comentarios} dispatch={this.props.dispatch} />
-              </div>
-            </div>
-            <Link to={'/'}>Voltar</Link>
-          </div>
-          <div className="mdl-layout-spacer"></div>
+        <h2>{'Detalhes'}</h2>
+        <Card>
+          <Card.Body>
+            <Card.Title>{postagem.title} - {postagem.category}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">{postagem.author}</Card.Subtitle>
+            <Card.Text>
+              {postagem.body}
+            </Card.Text>
+            {this.RenderizarChips(postagem.voteScore === 0 ? 'fa-hand-peace' : postagem.voteScore > 0 ? 'fa-thumbs-up' : 'fa-thumbs-down', postagem.voteScore)}
+            {this.RenderizarChips('fa-comment-alt', postagem.commentCount)}
+            {this.RenderizarChips('fa-calendar-alt', <Moment date={postagem.timestamp} format="DD/MM/YYYY HH:mm:ss" />)}
+          </Card.Body>
+        </Card>
+
+        <hr />
+        <h3>Comentários</h3>
+        <NovoComentario postId={postagem.id} dispatch={this.props.dispatch} />
+        <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+          <ListagemComentarios lista={comentarios} dispatch={this.props.dispatch} />
         </div>
+
+        <Link to={'/'}>Voltar</Link>
       </div>
     )
   }
