@@ -27,7 +27,11 @@ class CadastrarEditarPostagemView extends Component {
 
   componentDidMount() {
     // Consulta as categorias para popular o dropdown de categorias
-    this.props.dispatch(handleGetCategorias())
+    this.props.dispatch(handleGetCategorias(() => {
+      this.setState({
+        category: this.state.category === '' ? this.props.categorias[0].name : this.state.category
+      })
+    }))
 
     // Caso o id esteja definido, então é a alterção de uma postagem e consulta a mesma na api
     if (typeof this.props.match.params.id !== 'undefined') {
@@ -144,7 +148,7 @@ class CadastrarEditarPostagemView extends Component {
               </Form.Control>
             </Form.Group>
 
-            <Button variant="primary" type="submit" onClick={() => this.Salvar(title, author, body, category, id)}>Salvar</Button>
+            <Button variant="primary" type="button" onClick={() => this.Salvar(title, author, body, category, id)}>Salvar</Button>
 
           </Form>
         </Card>
