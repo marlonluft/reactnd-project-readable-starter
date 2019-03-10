@@ -7,29 +7,28 @@ export const PUT_POSTAGEM = 'PUT_POSTAGEM'
 export const POST_POSTAGEM = 'POST_POSTAGEM'
 export const SORT_POSTAGENS = 'SORT_POSTAGENS'
 
-function getPostagem (postagem) {
+function getPostagem(postagem) {
   return {
     type: GET_POSTAGEM,
     postagem,
   }
 }
 
-function addPostagem (postagem) {
+function addPostagem(postagem) {
   return {
     type: ADD_POSTAGEM,
     postagem,
   }
 }
 
-function atualizarPostagem (postagem)
-{
+function atualizarPostagem(postagem) {
   return {
     type: PUT_POSTAGEM,
     postagem,
   }
 }
 
-function removePostagem (id) {
+function removePostagem(id) {
   return {
     type: REMOVE_POSTAGEM,
     id,
@@ -52,9 +51,9 @@ function sortPostagens(ordemCrescente, coluna) {
   }
 }
 
-export function handleAddPostagem (objeto, callBack) {
+export function handleAddPostagem(objeto, callBack) {
   return (dispatch) => {
-    
+
     objeto.id = API.createUUID()
 
     return API.postPostagem(objeto)
@@ -66,8 +65,8 @@ export function handleAddPostagem (objeto, callBack) {
   }
 }
 
-export function handleAtualizarPostagem (objeto, callBack) {
-  return (dispatch) => {    
+export function handleAtualizarPostagem(objeto, callBack) {
+  return (dispatch) => {
     return API.putPostagem(objeto)
       .then(() => {
         dispatch(atualizarPostagem(objeto))
@@ -77,23 +76,24 @@ export function handleAtualizarPostagem (objeto, callBack) {
   }
 }
 
-export function handleDeletePostagem (postagem) {
+export function handleDeletePostagem(postagem, callBack) {
   return (dispatch) => {
-    dispatch(removePostagem(postagem.id))
-
     return API.deletePostagem(postagem.id)
+      .then(() => {
+        dispatch(removePostagem(postagem.id))
+        setTimeout(callBack, 20)
+      })
       .catch((e) => {
-        dispatch(addPostagem(postagem))
         alert('ocorreu um erro ao deletar a postagem. Tente novamente.')
       })
   }
 }
 
-export function handleGetPostagem (id) {
-  return handleGetPostagemCB(id, () => {})
+export function handleGetPostagem(id) {
+  return handleGetPostagemCB(id, () => { })
 }
 
-export function handleGetPostagemCB (id, callBack) {
+export function handleGetPostagemCB(id, callBack) {
   return (dispatch) => {
     return API.fetchPostagem(id)
       .then((postagem) => {
@@ -106,7 +106,7 @@ export function handleGetPostagemCB (id, callBack) {
   }
 }
 
-export function handlePostPostagem (acrescentar, id) {
+export function handlePostPostagem(acrescentar, id) {
   return (dispatch) => {
     dispatch(votarPostagem(acrescentar, id))
 
@@ -118,7 +118,7 @@ export function handlePostPostagem (acrescentar, id) {
   }
 }
 
-export function handleSortPostagens (ordemCrescente, coluna) {
+export function handleSortPostagens(ordemCrescente, coluna) {
   return (dispatch) => {
     dispatch(sortPostagens(ordemCrescente, coluna))
   }

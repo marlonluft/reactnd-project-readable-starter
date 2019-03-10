@@ -48,7 +48,7 @@ class ListagemPostagemView extends Component {
                 <h2>{this.props.match.params.categoria || 'Todas Categorias'}</h2>
                 <Row>
                     <Col sm={8}>                        
-                        <ListagemPostagens lista={this.props.postagens} dispatch={this.props.dispatch} />
+                        <ListagemPostagens lista={this.props.postagens} dispatch={this.props.dispatch} history={this.props.history} />
                     </Col>
                     <Col sm={4}>
                         <NovaPostagem />

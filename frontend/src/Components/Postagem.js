@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 /* Componentes */
 import Moment from 'react-moment';
 import Votacao from './Votacao'
+import EditarRemoverPostagem from './EditarRemoverPostagem'
 
 /* CSS */
 import '../Style/Postagem.css'
@@ -23,8 +24,7 @@ function Postagem(props) {
             <td><Moment date={props.postagem.timestamp} format="DD/MM/YYYY HH:mm:ss" /></td>
             <td>
                 <Link to={'/' + props.postagem.category + '/' + props.postagem.id}><Button variant="outline-info"><i className="fas fa-info"></i></Button></Link>
-                <Link className="margemLeft" to={'/editar/' + props.postagem.id}><Button variant="outline-primary"><i className="fas fa-pen"></i></Button></Link>
-                <Button className="margemLeft" onClick={() => props.onDelete(props.postagem)} variant="outline-danger"><i className="fas fa-trash-alt"></i></Button>
+                <EditarRemoverPostagem postagem={props.postagem} dispatch={props.dispatch} history={props.history} />
             </td>
         </tr>
     )

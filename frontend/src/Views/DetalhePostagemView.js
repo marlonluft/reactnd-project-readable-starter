@@ -11,6 +11,7 @@ import Moment from 'react-moment';
 import ListagemComentarios from '../Components/ListagemComentarios'
 import NovoComentario from '../Components/NovoComentario'
 import Votacao from '../Components/Votacao'
+import EditarRemoverPostagem from '../Components/EditarRemoverPostagem'
 
 /* Actions */
 import { handleGetComentario } from '../Actions/ComentarioAction'
@@ -60,6 +61,9 @@ class DetalhePostagemView extends Component {
               {this.RenderizarEstatistica(postagem.voteScore === 0 ? 'fa-hand-peace' : postagem.voteScore > 0 ? 'fa-thumbs-up' : 'fa-thumbs-down', postagem.voteScore)}
               {this.RenderizarEstatistica('fa-comment-alt', postagem.commentCount)}
               {this.RenderizarEstatistica('fa-calendar-alt', <Moment date={postagem.timestamp} format="DD/MM/YYYY HH:mm:ss" />)}
+            </div>
+            <div>
+              <EditarRemoverPostagem postagem={postagem} dispatch={this.props.dispatch} history={this.props.history} />
             </div>
           </Card.Body>
         </Card>
