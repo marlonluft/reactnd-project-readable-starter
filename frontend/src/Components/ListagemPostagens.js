@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import Postagem from './Postagem.js'
 
 /* Actions */
-import { handleDeletePostagem, handlePostPostagem } from '../Actions/postagem'
+import { handleDeletePostagem, handlePostPostagem } from '../Actions/PostagemAction'
 
 /* Bootstrap */
 import Table from 'react-bootstrap/Table'

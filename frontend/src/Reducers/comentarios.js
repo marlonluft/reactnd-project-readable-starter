@@ -4,7 +4,7 @@ import {
   GET_COMENTARIOS,
   POST_COMENTARIO,
   PUT_COMENTARIO
-} from '../Actions/comentario'
+} from '../Actions/ComentarioAction'
 
 
 export default function comentarios(state = [], action) {

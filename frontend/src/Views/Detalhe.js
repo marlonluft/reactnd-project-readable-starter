@@ -12,8 +12,8 @@ import ListagemComentarios from '../Components/ListagemComentarios'
 import NovoComentario from '../Components/NovoComentario'
 
 /* Actions */
-import { handleGetComentario } from '../Actions/comentario'
-import { handleGetPostagem } from '../Actions/postagem'
+import { handleGetComentario } from '../Actions/ComentarioAction'
+import { handleGetPostagem } from '../Actions/PostagemAction'
 
 /* Bootstrap */
 import Card from 'react-bootstrap/Card'

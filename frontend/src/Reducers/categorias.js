@@ -1,6 +1,6 @@
 
-import { RECEIVE_DATA } from '../Actions/shared'
-import { GET_CATEGORIAS } from '../Actions/categorias'
+import { RECEIVE_DATA } from '../Actions/CompartilhadoAction'
+import { GET_CATEGORIAS } from '../Actions/CategoriaAction'
 
 export default function categorias(state = [], action) {
   switch (action.type) {

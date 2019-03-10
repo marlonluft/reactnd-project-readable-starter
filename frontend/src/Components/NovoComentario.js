@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 /* Actions */
-import { handleAddComentario } from '../Actions/comentario'
+import { handleAddComentario } from '../Actions/ComentarioAction'
 
 /* CSS */
 import '../Style/Comentario.css'

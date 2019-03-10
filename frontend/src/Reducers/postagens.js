@@ -5,16 +5,16 @@ import {
   PUT_POSTAGEM,
   POST_POSTAGEM,
   SORT_POSTAGENS,
-} from '../Actions/postagem'
+} from '../Actions/PostagemAction'
 
 import {
   ADD_COMENTARIO,
   REMOVE_COMENTARIO
-} from '../Actions/comentario'
+} from '../Actions/ComentarioAction'
 
 import {
   RECEIVE_DATA
-} from '../Actions/shared'
+} from '../Actions/CompartilhadoAction'
 
 export function postagens(state = [], action) {
   switch (action.type) {

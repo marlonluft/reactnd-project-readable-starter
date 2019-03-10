@@ -9,8 +9,8 @@ import FiltroPostagens from '../Components/FiltroPostagens.js'
 import NovaPostagem from '../Components/NovaPostagem.js'
 
 /* Actions */
-import { handleInitialData } from '../Actions/shared'
-import { handleSortPostagens } from '../Actions/postagem'
+import { handleInitialData } from '../Actions/CompartilhadoAction'
+import { handleSortPostagens } from '../Actions/PostagemAction'
 
 /* Bootstrap */
 import Row from 'react-bootstrap/Row'

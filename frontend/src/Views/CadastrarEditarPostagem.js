@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 import '../Style/DetalhePostagem.css'
 
 /* Actions */
-import { handleGetCategorias } from '../Actions/categorias'
-import { handleGetPostagemCB, handleAtualizarPostagem, handleAddPostagem } from '../Actions/postagem'
+import { handleGetCategorias } from '../Actions/CategoriaAction'
+import { handleGetPostagemCB, handleAtualizarPostagem, handleAddPostagem } from '../Actions/PostagemAction'
 
 /* Bootstrap */
 import Card from 'react-bootstrap/Card'
