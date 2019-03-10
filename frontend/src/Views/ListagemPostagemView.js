@@ -17,7 +17,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 
-class Root extends Component {
+class ListagemPostagemView extends Component {
 
     componentDidMount() {
         // Realiza a busca dos dados para preenchimento da tela, listagem de psotagens e de categorias
@@ -64,4 +64,4 @@ class Root extends Component {
 export default connect((state) => ({
     postagens: state.postagens,
     categorias: state.categorias
-}))(Root)
+}))(ListagemPostagemView)

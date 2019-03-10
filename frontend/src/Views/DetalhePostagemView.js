@@ -18,7 +18,7 @@ import { handleGetPostagem } from '../Actions/PostagemAction'
 /* Bootstrap */
 import Card from 'react-bootstrap/Card'
 
-class Detalhe extends Component {
+class DetalhePostagemView extends Component {
 
   componentDidMount() {
     // Consulta na api a lista de comentários com ligação a postagem sendo carrgada.
@@ -79,4 +79,4 @@ class Detalhe extends Component {
 export default connect((state) => ({
   comentarios: state.comentarios,
   postagem: state.postagem
-}))(Detalhe)
+}))(DetalhePostagemView)

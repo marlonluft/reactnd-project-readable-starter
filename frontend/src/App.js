@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 /* Componentes */
-import Detalhe from './Views/Detalhe.js'
-import CadastrarEditarPostagem from './Views/CadastrarEditarPostagem.js'
-import Root from './Views/Root.js'
+import DetalhePostagemView from './Views/DetalhePostagemView.js'
+import CadastrarEditarPostagemView from './Views/CadastrarEditarPostagemView.js'
+import ListagemPostagemView from './Views/ListagemPostagemView.js'
 
 /* Bootstrap */
 import Container from 'react-bootstrap/Container'
@@ -19,11 +19,11 @@ class App extends Component {
       <Container>
         <BrowserRouter>
           <Switch>
-            <Route path='/categoria/:id' component={Root} />
-            <Route path='/detalhe/:id' component={Detalhe} />
-            <Route path='/editar/:id' component={CadastrarEditarPostagem} />
-            <Route path='/cadastrar' component={CadastrarEditarPostagem} />
-            <Route exact path='/' component={Root} />
+            <Route path='/categoria/:id' component={ListagemPostagemView} />
+            <Route path='/detalhe/:id' component={DetalhePostagemView} />
+            <Route path='/editar/:id' component={CadastrarEditarPostagemView} />
+            <Route path='/cadastrar' component={CadastrarEditarPostagemView} />
+            <Route exact path='/' component={ListagemPostagemView} />
           </Switch>
         </BrowserRouter>
       </Container>

@@ -15,7 +15,7 @@ import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class Editar extends Component {
+class CadastrarEditarPostagemView extends Component {
 
   state = {
     id: null,
@@ -158,4 +158,4 @@ class Editar extends Component {
 export default connect((state) => ({
   categorias: state.categorias,
   postagem: state.postagem
-}))(Editar)
+}))(CadastrarEditarPostagemView)
