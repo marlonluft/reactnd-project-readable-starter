@@ -9,11 +9,12 @@ function getCategorias (categorias) {
   }
 }
 
-export function handleGetCategorias () {
+export function handleGetCategorias (callBack) {
   return (dispatch) => {
     return API.fetchCategorias()
       .then((categorias) => {
         dispatch(getCategorias(categorias))
+        callBack()
       })
       .catch((e) => {
         alert('Ocorreu um erro ao consultar as categorias. Tente novamente.')
