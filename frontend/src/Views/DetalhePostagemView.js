@@ -55,14 +55,14 @@ class DetalhePostagemView extends Component {
               {postagem.body}
             </Card.Text>
 
-            <div>
+            <div style={{display: 'inline-block'}}>
               <Votacao id={postagem.id} ehPostagem={true} dispatch={this.props.dispatch} />
               {/* Renderiza as estatisticas da postagem, como quantidade de comentários, score e data de criação. */}
               {this.RenderizarEstatistica(postagem.voteScore === 0 ? 'fa-hand-peace' : postagem.voteScore > 0 ? 'fa-thumbs-up' : 'fa-thumbs-down', postagem.voteScore)}
               {this.RenderizarEstatistica('fa-comment-alt', postagem.commentCount)}
               {this.RenderizarEstatistica('fa-calendar-alt', <Moment date={postagem.timestamp} format="DD/MM/YYYY HH:mm:ss" />)}
             </div>
-            <div>
+            <div style={{display: 'inline-block', right: '10px', bottom: '10px', position: 'absolute'}}>
               <EditarRemoverPostagem postagem={postagem} dispatch={this.props.dispatch} history={this.props.history} />
             </div>
           </Card.Body>
