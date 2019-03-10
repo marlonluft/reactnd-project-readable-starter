@@ -21,7 +21,7 @@ class ListagemPostagemView extends Component {
 
     componentDidMount() {
         // Realiza a busca dos dados para preenchimento da tela, listagem de psotagens e de categorias
-        this.props.dispatch(handleInitialData(this.props.match.params.id || null))
+        this.props.dispatch(handleInitialData(this.props.match.params.categoria || null))
     }
 
     filtar = (ordem, coluna) => {
@@ -45,7 +45,7 @@ class ListagemPostagemView extends Component {
 
         return (
             <div>
-                <h2>{this.props.match.params.id || 'Todas Categorias'}</h2>
+                <h2>{this.props.match.params.categoria || 'Todas Categorias'}</h2>
                 <Row>
                     <Col sm={8}>                        
                         <ListagemPostagens lista={this.props.postagens} dispatch={this.props.dispatch} />

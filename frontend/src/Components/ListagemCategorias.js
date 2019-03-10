@@ -21,7 +21,7 @@ class ListagemCategorias extends Component {
                     </ListGroup.Item>
                     {
                         lista.map((categoria) => (
-                            <ListGroup.Item key={categoria.name} as="li" active={route === "/CATEGORIA/" + categoria.name.toUpperCase()} onClick={() => alterarCategoria('/categoria/' + categoria.name)}>
+                            <ListGroup.Item key={categoria.name} as="li" active={route === "/" + categoria.name.toUpperCase()} onClick={() => alterarCategoria('/' + categoria.name)}>
                                     {categoria.name}
                             </ListGroup.Item>
                         ))
