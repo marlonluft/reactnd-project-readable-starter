@@ -1,10 +1,16 @@
+/* React */
 import React, { Component } from 'react'
-import '../Style/DetalhePostagem.css'
-import { handleGetCategorias } from '../Actions/categorias'
-import { handleGetPostagemCB, handleAtualizarPostagem, handleAddPostagem } from '../Actions/postagem'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+/* CSS */
+import '../Style/DetalhePostagem.css'
+
+/* Actions */
+import { handleGetCategorias } from '../Actions/categorias'
+import { handleGetPostagemCB, handleAtualizarPostagem, handleAddPostagem } from '../Actions/postagem'
+
+/* Bootstrap */
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -20,8 +26,10 @@ class Editar extends Component {
   }
 
   componentDidMount() {
+    // Consulta as categorias para popular o dropdown de categorias
     this.props.dispatch(handleGetCategorias())
 
+    // Caso o id esteja definido, então é a alterção de uma postagem e consulta a mesma na api
     if (typeof this.props.match.params.id !== 'undefined') {
       this.props.dispatch(handleGetPostagemCB(this.props.match.params.id, () => {
         this.setState({
@@ -34,7 +42,6 @@ class Editar extends Component {
       }))
     }
   }
-
 
   onTituloChange = (novoTitulo) => {
     this.setState({
@@ -134,14 +141,10 @@ class Editar extends Component {
                     <option key={categoria.name} value={categoria.name}>{categoria.name}</option>
                   ))
                 }
-
               </Form.Control>
             </Form.Group>
 
-
-            <Button variant="primary" type="submit" onClick={() => this.Salvar(title, author, body, category, id)}>
-              Salvar
-          </Button>
+            <Button variant="primary" type="submit" onClick={() => this.Salvar(title, author, body, category, id)}>Salvar</Button>
 
           </Form>
         </Card>

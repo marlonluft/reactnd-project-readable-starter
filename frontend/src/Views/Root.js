@@ -1,13 +1,18 @@
+/* React */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
+/* Componentes */
 import ListagemCategorias from '../Components/ListagemCategorias.js'
 import ListagemPostagens from '../Components/ListagemPostagens.js'
 import FiltroPostagens from '../Components/FiltroPostagens.js'
 import NovaPostagem from '../Components/NovaPostagem.js'
 
+/* Actions */
 import { handleInitialData } from '../Actions/shared'
 import { handleSortPostagens } from '../Actions/postagem'
 
+/* Bootstrap */
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
@@ -15,17 +20,19 @@ import Col from 'react-bootstrap/Col'
 class Root extends Component {
 
     componentDidMount() {
+        // Realiza a busca dos dados para preenchimento da tela, listagem de psotagens e de categorias
         this.props.dispatch(handleInitialData(this.props.match.params.id || null))
     }
 
     filtar = (ordem, coluna) => {
+        // Realiza o filtro da listagem de postagens
         let ordemCrescente = ordem === "0"
         this.props.dispatch(handleSortPostagens(ordemCrescente, coluna))
         this.forceUpdate()
     }
 
     alterarCategoria = (route) => {
-        //this.props.dispatch(handleInitialData(this.props.match.params.id || null))
+        // Altera a rota e força a atualização da tela.
         this.props.history.push(route)
         this.props.history.go()
     }
@@ -33,7 +40,7 @@ class Root extends Component {
     render() {
 
         if (typeof this.props.categorias === 'undefined' || typeof this.props.postagens === 'undefined') {
-            return ('');
+            return ('Falha ao carregar a página, favor tentar novamente.');
         }
 
         return (

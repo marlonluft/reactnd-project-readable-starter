@@ -1,7 +1,14 @@
+/* React */
 import React from 'react'
-import Moment from 'react-moment';
 import { Link } from 'react-router-dom'
+
+/* Componentes */
+import Moment from 'react-moment';
+
+/* CSS */
 import '../Style/Postagem.css'
+
+/* Bootstrap */
 import Button from 'react-bootstrap/Button'
 
 function Postagem(props) {

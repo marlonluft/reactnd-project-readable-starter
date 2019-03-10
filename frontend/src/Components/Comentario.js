@@ -1,6 +1,11 @@
+/* React */
 import React, { Component } from 'react'
 import Moment from 'react-moment';
+
+/* CSS */
 import '../Style/Comentario.css'
+
+/* Bootstrap */
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'

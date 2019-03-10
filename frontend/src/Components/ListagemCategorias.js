@@ -1,5 +1,7 @@
+/* React */
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+
+/* Bootstrap */
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 

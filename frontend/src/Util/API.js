@@ -1,3 +1,5 @@
+/* Este arquivo auxilia na comunicação da aplicação com a API */
+
 const API = {
 
     // Gera id para os novos registros.

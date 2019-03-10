@@ -1,6 +1,13 @@
+/* React */
 import React, { Component } from 'react'
+
+/* Componentes */
 import Postagem from './Postagem.js'
+
+/* Actions */
 import { handleDeletePostagem, handlePostPostagem } from '../Actions/postagem'
+
+/* Bootstrap */
 import Table from 'react-bootstrap/Table'
 
 class ListagemPostagens extends Component {

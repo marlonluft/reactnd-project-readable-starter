@@ -1,5 +1,10 @@
+/* React */
 import React, { Component } from 'react'
-import Comentario from './Comentario'
+
+/* Componentes */
+import Comentario from './Comentario.js'
+
+/* Actions */
 import { handlePostComentario, handleDeleteComentario, handleAtualizarComentario } from '../Actions/comentario'
 
 class ListagemComentarios extends Component {

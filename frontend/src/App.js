@@ -1,11 +1,13 @@
+/* React */
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+/* Componentes */
 import Detalhe from './Views/Detalhe.js'
 import CadastrarEditarPostagem from './Views/CadastrarEditarPostagem.js'
 import Root from './Views/Root.js'
 
+/* Bootstrap */
 import Container from 'react-bootstrap/Container'
 
 class App extends Component {
@@ -13,6 +15,7 @@ class App extends Component {
   render() {
 
     return (
+      /* Mapeamente de rotas da aplicação */
       <Container>
         <BrowserRouter>
           <Switch>
