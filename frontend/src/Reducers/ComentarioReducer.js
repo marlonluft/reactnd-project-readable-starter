@@ -7,7 +7,7 @@ import {
 } from '../Actions/ComentarioAction'
 
 
-export default function comentarios(state = [], action) {
+export default function ComentarioReducer(state = [], action) {
   switch (action.type) {
     case ADD_COMENTARIO:
       return state.concat([action.comentario])

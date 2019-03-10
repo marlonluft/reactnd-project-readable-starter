@@ -2,7 +2,7 @@
 import { RECEIVE_DATA } from '../Actions/CompartilhadoAction'
 import { GET_CATEGORIAS } from '../Actions/CategoriaAction'
 
-export default function categorias(state = [], action) {
+export default function CategoriaReducer(state = [], action) {
   switch (action.type) {
     case GET_CATEGORIAS:
     case RECEIVE_DATA:

@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 
-import { postagens, postagem } from './postagens'
-import categorias from './categorias'
-import comentarios from './comentarios'
+import { PostagensReducer, PostagemReducer } from './PostagemReducer'
+import CategoriaReducer from './CategoriaReducer'
+import ComentarioReducer from './ComentarioReducer'
 
 export default combineReducers({
-    postagens,
-    postagem,
-    categorias,
-    comentarios,
+    postagens: PostagensReducer,
+    postagem: PostagemReducer,
+    categorias: CategoriaReducer,
+    comentarios: ComentarioReducer,
 })

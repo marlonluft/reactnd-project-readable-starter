@@ -16,7 +16,7 @@ import {
   RECEIVE_DATA
 } from '../Actions/CompartilhadoAction'
 
-export function postagens(state = [], action) {
+export function PostagensReducer(state = [], action) {
   switch (action.type) {
     case ADD_POSTAGEM:
       return state.concat([action.postagem])
@@ -62,7 +62,7 @@ export function postagens(state = [], action) {
   }
 }
 
-export function postagem(state = [], action) {
+export function PostagemReducer(state = [], action) {
   switch (action.type) {
     case GET_POSTAGEM:
       return action.postagem
