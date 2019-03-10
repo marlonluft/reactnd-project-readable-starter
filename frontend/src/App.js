@@ -2,10 +2,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-/* Componentes */
+/* Views */
 import DetalhePostagemView from './Views/DetalhePostagemView.js'
 import CadastrarEditarPostagemView from './Views/CadastrarEditarPostagemView.js'
 import ListagemPostagemView from './Views/ListagemPostagemView.js'
+import NaoEncontradoView from './Views/NaoEncontradoView.js'
 
 /* Bootstrap */
 import Container from 'react-bootstrap/Container'
@@ -24,6 +25,7 @@ class App extends Component {
             <Route exact path='/:categoria' component={ListagemPostagemView} />
             <Route exact path='/:categoria/:postId' component={DetalhePostagemView} />
             <Route exact path='/' component={ListagemPostagemView} />
+            <Route component={NaoEncontradoView} />
           </Switch>
         </BrowserRouter>
       </Container>
