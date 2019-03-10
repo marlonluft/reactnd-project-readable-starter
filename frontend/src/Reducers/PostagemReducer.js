@@ -44,14 +44,12 @@ export function PostagensReducer(state = [], action) {
       var lista = state
 
       lista.sort((postagemA, postagemB) => {
-        if (action.ordemCrescente)
-        {
+        if (action.ordemCrescente) {
           return postagemA[action.coluna] > postagemB[action.coluna] ? 1 : postagemA[action.coluna] < postagemB[action.coluna] ? -1 : 0
         }
-        else
-        {
+        else {
           return postagemA[action.coluna] > postagemB[action.coluna] ? -1 : postagemA[action.coluna] < postagemB[action.coluna] ? 1 : 0
-        }          
+        }
       })
       state = lista
 
@@ -74,6 +72,11 @@ export function PostagemReducer(state = [], action) {
     case REMOVE_COMENTARIO:
       if (state.id === action.parentId) {
         state.commentCount = state.commentCount - 1;
+      }
+      return state;
+    case POST_POSTAGEM:
+      if (state.id === action.id) {
+        state.voteScore = state.voteScore + (action.acrescentar ? 1 : -1);
       }
       return state;
     default:
