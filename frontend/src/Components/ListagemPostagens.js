@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import Postagem from './Postagem.js'
-import { handleDeletePostagem, handlePostPostagem } from '../Actions/postagem'
+import { handleDeletePostagem, handlePostPostagem, handleSortPostagens } from '../Actions/postagem'
 
 class ListagemPostagens extends Component {
 
+    state = {
+        ordemCrescente: true,
+        ordemColuna: 'voteScore'
+    }
+
     onDelete = (postagem) => {
-        var resposta = window.confirm("Confimra a exclusão da postagem '" + postagem.title + "'?")
+        var resposta = window.confirm("Confirma a exclusão da postagem '" + postagem.title + "'?")
         if (resposta === true) {
             this.props.dispatch(handleDeletePostagem(postagem))
         }
@@ -15,14 +20,26 @@ class ListagemPostagens extends Component {
         this.props.dispatch(handlePostPostagem(acrescentar, postagemId))
     }
 
+    onSort = (coluna) => {
+
+        var ordemCrescenteNova = coluna === this.state.ordemColuna ?  !this.state.ordemCrescente : true
+
+        this.setState({
+            ordemCrescente: ordemCrescenteNova,
+            ordemColuna: coluna
+        })
+
+        this.props.dispatch(handleSortPostagens(ordemCrescenteNova, coluna))
+    }
+
     render() {
 
         const { lista } = this.props
-
+        
         return (
             <div>
-                <a href="#">Score</a>
-                <a href="#">Data</a>
+                <a href="#" onClick={() => this.onSort('voteScore')}>Score</a>
+                <a href="#" onClick={() => this.onSort('timestamp')}>Data</a>
 
                 <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                     <thead>

@@ -5,6 +5,7 @@ import {
   GET_POSTAGENS,
   PUT_POSTAGEM,
   POST_POSTAGEM,
+  SORT_POSTAGENS,
 } from '../Actions/postagem'
 
 import {
@@ -41,6 +42,22 @@ export function postagens(state = [], action) {
 
         return post;
       })
+    case SORT_POSTAGENS:
+      var lista = state
+
+      lista.sort((postagemA, postagemB) => {
+        if (action.ordemCrescente)
+        {
+          return postagemA[action.coluna] > postagemB[action.coluna] ? 1 : postagemA[action.coluna] < postagemB[action.coluna] ? -1 : 0
+        }
+        else
+        {
+          return postagemA[action.coluna] > postagemB[action.coluna] ? -1 : postagemA[action.coluna] < postagemB[action.coluna] ? 1 : 0
+        }          
+      })
+      state = lista
+
+      return state;
 
     default:
       return state

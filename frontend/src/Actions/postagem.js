@@ -6,6 +6,7 @@ export const GET_POSTAGENS = 'GET_POSTAGENS'
 export const GET_POSTAGEM = 'GET_POSTAGEM'
 export const PUT_POSTAGEM = 'PUT_POSTAGEM'
 export const POST_POSTAGEM = 'POST_POSTAGEM'
+export const SORT_POSTAGENS = 'SORT_POSTAGENS'
 
 function getPostagens (postagens) {
   return {
@@ -48,6 +49,14 @@ function votarPostagem(acrescentar, id) {
     type: POST_POSTAGEM,
     id,
     acrescentar
+  }
+}
+
+function sortPostagens(ordemCrescente, coluna) {
+  return {
+    type: SORT_POSTAGENS,
+    ordemCrescente,
+    coluna
   }
 }
 
@@ -126,5 +135,11 @@ export function handlePostPostagem (acrescentar, id) {
         dispatch(votarPostagem(!acrescentar, id))
         alert('ocorreu um erro ao votar na postagem. Tente novamente.')
       })
+  }
+}
+
+export function handleSortPostagens (ordemCrescente, coluna) {
+  return (dispatch) => {
+    dispatch(sortPostagens(ordemCrescente, coluna))
   }
 }
