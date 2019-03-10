@@ -22,10 +22,10 @@ class DetalhePostagemView extends Component {
 
   componentDidMount() {
     // Consulta na api a lista de comentários com ligação a postagem sendo carrgada.
-    this.props.dispatch(handleGetComentario(this.props.match.params.id))
+    this.props.dispatch(handleGetComentario(this.props.match.params.postId))
 
     // Consulta na api a postagem requisitada.
-    this.props.dispatch(handleGetPostagem(this.props.match.params.id))
+    this.props.dispatch(handleGetPostagem(this.props.match.params.postId))
   }
 
   RenderizarEstatistica = (icone, conteudo) => {
