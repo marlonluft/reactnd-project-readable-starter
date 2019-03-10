@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import Postagem from './Postagem.js'
 
 /* Actions */
-import { handleDeletePostagem, handlePostPostagem } from '../Actions/PostagemAction'
+import { handleDeletePostagem } from '../Actions/PostagemAction'
 
 /* Bootstrap */
 import Table from 'react-bootstrap/Table'
@@ -17,10 +17,6 @@ class ListagemPostagens extends Component {
         if (resposta === true) {
             this.props.dispatch(handleDeletePostagem(postagem))
         }
-    }
-
-    onVote = (acrescentar, postagemId) => {
-        this.props.dispatch(handlePostPostagem(acrescentar, postagemId))
     }
 
     render() {
@@ -46,7 +42,7 @@ class ListagemPostagens extends Component {
                                     <td colSpan="5">Nenhuma postagem disponível</td>
                                 </tr>) : (
                                     lista.map((postagem) => (
-                                        <Postagem key={postagem.id} postagem={postagem} onDelete={this.onDelete} onVote={this.onVote} />
+                                        <Postagem key={postagem.id} postagem={postagem} onDelete={this.onDelete} dispatch={this.props.dispatch} />
                                     ))
                                 )
                         }

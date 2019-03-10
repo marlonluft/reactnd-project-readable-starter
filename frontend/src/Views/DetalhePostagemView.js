@@ -10,6 +10,7 @@ import '../Style/DetalhePostagem.css'
 import Moment from 'react-moment';
 import ListagemComentarios from '../Components/ListagemComentarios'
 import NovoComentario from '../Components/NovoComentario'
+import Votacao from '../Components/Votacao'
 
 /* Actions */
 import { handleGetComentario } from '../Actions/ComentarioAction'
@@ -53,10 +54,13 @@ class DetalhePostagemView extends Component {
               {postagem.body}
             </Card.Text>
 
-            {/* Renderiza as estatisticas da postagem, como quantidade de comentários, score e data de criação. */}
-            {this.RenderizarEstatistica(postagem.voteScore === 0 ? 'fa-hand-peace' : postagem.voteScore > 0 ? 'fa-thumbs-up' : 'fa-thumbs-down', postagem.voteScore)}
-            {this.RenderizarEstatistica('fa-comment-alt', postagem.commentCount)}
-            {this.RenderizarEstatistica('fa-calendar-alt', <Moment date={postagem.timestamp} format="DD/MM/YYYY HH:mm:ss" />)}
+            <div>
+              <Votacao id={postagem.id} ehPostagem={true} dispatch={this.props.dispatch} />
+              {/* Renderiza as estatisticas da postagem, como quantidade de comentários, score e data de criação. */}
+              {this.RenderizarEstatistica(postagem.voteScore === 0 ? 'fa-hand-peace' : postagem.voteScore > 0 ? 'fa-thumbs-up' : 'fa-thumbs-down', postagem.voteScore)}
+              {this.RenderizarEstatistica('fa-comment-alt', postagem.commentCount)}
+              {this.RenderizarEstatistica('fa-calendar-alt', <Moment date={postagem.timestamp} format="DD/MM/YYYY HH:mm:ss" />)}
+            </div>
           </Card.Body>
         </Card>
 

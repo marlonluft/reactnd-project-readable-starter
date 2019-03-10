@@ -9,10 +9,6 @@ import { handlePostComentario, handleDeleteComentario, handleAtualizarComentario
 
 class ListagemComentarios extends Component {
 
-    onVote = (acrescentar, comentarioId) => {
-        this.props.dispatch(handlePostComentario(acrescentar, comentarioId))
-    }
-
     onUpdate = (novoComentario, comentarioId) => {
         this.props.dispatch(handleAtualizarComentario(novoComentario, +new Date, comentarioId))
     }
@@ -32,7 +28,7 @@ class ListagemComentarios extends Component {
                         <li className="mdl-list__item mdl-list__item--three-line">Nenhum comentário</li>
                     ) : (
                             lista.map((comentario) => (
-                                <Comentario key={comentario.id} comentario={comentario} onVote={this.onVote} onUpdate={this.onUpdate} onDelete={this.onDelete} />
+                                <Comentario key={comentario.id} comentario={comentario} dispatch={this.props.dispatch} onUpdate={this.onUpdate} onDelete={this.onDelete} />
                             ))
                         )
                 }

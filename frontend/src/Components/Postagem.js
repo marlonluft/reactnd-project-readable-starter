@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 /* Componentes */
 import Moment from 'react-moment';
+import Votacao from './Votacao'
 
 /* CSS */
 import '../Style/Postagem.css'
@@ -15,8 +16,7 @@ function Postagem(props) {
     return (
         <tr>
             <td>
-                <i className="fas fa-arrow-up pointer" onClick={() => props.onVote(true, props.postagem.id)}></i>
-                <i className="fas fa-arrow-down pointer margemLeft" onClick={() => props.onVote(false, props.postagem.id)}></i>
+                <Votacao id={props.postagem.id} ehPostagem={true} dispatch={props.dispatch} />
             </td>
             <td>{props.postagem.title}</td>
             <td>{props.postagem.voteScore}</td>

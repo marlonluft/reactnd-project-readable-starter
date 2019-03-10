@@ -5,6 +5,9 @@ import Moment from 'react-moment';
 /* CSS */
 import '../Style/Comentario.css'
 
+/* Componentes */
+import Votacao from './Votacao'
+
 /* Bootstrap */
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -56,7 +59,7 @@ class Comentario extends Component {
 
     render() {
 
-        const { comentario, onVote, onDelete } = this.props
+        const { comentario, onDelete } = this.props
         const { editMode, novoComentario } = this.state
 
         return (
@@ -77,8 +80,7 @@ class Comentario extends Component {
                         <span className="card-subtitulo margemLeft dataComentario"><Moment date={comentario.timestamp} format="DD/MM/YYYY HH:mm:ss" /></span>
                     </Card.Subtitle>
                     <div style={{ display: 'inline-block' }}>
-                        <i className="fas fa-arrow-up pointer" onClick={() => onVote(true, comentario.id)}></i>
-                        <i className="fas fa-arrow-down pointer margemLeft" onClick={() => onVote(false, comentario.id)}></i>
+                        <Votacao id={comentario.id} ehPostagem={false} dispatch={this.props.dispatch} />
                         <b className="margemLeft">{comentario.voteScore}</b>
                     </div>
 
