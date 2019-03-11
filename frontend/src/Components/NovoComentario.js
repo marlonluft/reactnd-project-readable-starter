@@ -71,7 +71,7 @@ class NovoComentario extends Component {
                         <Form.Group controlId="formBasicPassword">
                             <Form.Control type="text" rows="3" placeholder="Digite seu comentário" value={comentario} onChange={(event) => this.onComentarioChange(event.target.value)} />
                         </Form.Group>
-                        <Button variant="primary" type="submit" onClick={() => this.EnviarComentario(nome, comentario)}>
+                        <Button variant="primary" type="button" onClick={() => this.EnviarComentario(nome, comentario)}>
                             Enviar
                 </Button>
                     </Form>
