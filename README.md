@@ -23,7 +23,7 @@ Information about the API server and how to use it can be found in its [README f
 
 ## Front-End
 
-The front end project was developed with Reac.js + Redux, combined with material design from google.
+The front end project was developed with React.js + Redux, combined with Bootstrap.
 
 ## Front-End Packages
 
@@ -37,5 +37,7 @@ The front end project was developed with Reac.js + Redux, combined with material
     - `react-scripts (2.1.5)`
     - `moment (2.24.0)`
     - `react-moment (0.8.4)`
+    - `bootstrap@4.3.1`
+    - `jquery@1.9.1`
     
     
