@@ -50,8 +50,8 @@ export function handleAddComentario (objeto, callBack) {
     objeto.id = API.createUUID()
 
     return API.postComment(objeto)
-      .then(() => {
-        dispatch(addComentario(objeto))  
+      .then((comentario) => {
+        dispatch(addComentario(comentario))  
         callBack()      
       })
       .catch((e) => alert('Ocorreu um erro ao adicionar o comentario. Tente novamente.'))
