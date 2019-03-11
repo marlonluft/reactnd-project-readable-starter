@@ -38,6 +38,12 @@ class NovoComentario extends Component {
                 body: comentario,
                 author: nome,
                 parentId: this.props.postId
+            }, () => {
+                // caso ocorra sucesso na inserção, então limpa os campos
+                this.setState({
+                    nome: '',
+                    comentario: ''
+                })
             }))
         }
     }

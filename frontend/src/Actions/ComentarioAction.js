@@ -44,14 +44,15 @@ function atualizarComentario(novoComentario, id) {
   }
 }
 
-export function handleAddComentario (objeto) {
+export function handleAddComentario (objeto, callBack) {
   return (dispatch) => {
     
     objeto.id = API.createUUID()
 
     return API.postComment(objeto)
       .then(() => {
-        dispatch(addComentario(objeto))        
+        dispatch(addComentario(objeto))  
+        callBack()      
       })
       .catch((e) => alert('Ocorreu um erro ao adicionar o comentario. Tente novamente.'))
   }
