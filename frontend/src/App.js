@@ -20,6 +20,7 @@ class App extends Component {
       <Container>
         <BrowserRouter>
           <Switch>
+            <Route exact path='/404' component={NaoEncontradoView} />
             <Route exact path='/cadastrar' component={CadastrarEditarPostagemView} />
             <Route exact path='/editar/:id' component={CadastrarEditarPostagemView} />
             <Route exact path='/:categoria' component={ListagemPostagemView} />

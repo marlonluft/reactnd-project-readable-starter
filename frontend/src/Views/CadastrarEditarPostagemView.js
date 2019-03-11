@@ -15,6 +15,9 @@ import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+/* Util */
+import Funcoes from '../Util/Funcoes'
+
 class CadastrarEditarPostagemView extends Component {
 
   state = {
@@ -36,13 +39,18 @@ class CadastrarEditarPostagemView extends Component {
     // Caso o id esteja definido, então é a alterção de uma postagem e consulta a mesma na api
     if (typeof this.props.match.params.id !== 'undefined') {
       this.props.dispatch(handleGetPostagemCB(this.props.match.params.id, () => {
-        this.setState({
-          id: this.props.postagem.id,
-          title: this.props.postagem.title,
-          author: this.props.postagem.author,
-          body: this.props.postagem.body,
-          category: this.props.postagem.category
-        })
+        if (Funcoes.ehVazio(this.props.postagem)) {
+          this.props.history.push('/404')
+        }
+        else {
+          this.setState({
+            id: this.props.postagem.id,
+            title: this.props.postagem.title,
+            author: this.props.postagem.author,
+            body: this.props.postagem.body,
+            category: this.props.postagem.category
+          })
+        }
       }))
     }
   }

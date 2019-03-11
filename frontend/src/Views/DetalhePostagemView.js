@@ -15,10 +15,13 @@ import EditarRemoverPostagem from '../Components/EditarRemoverPostagem'
 
 /* Actions */
 import { handleGetComentario } from '../Actions/ComentarioAction'
-import { handleGetPostagem } from '../Actions/PostagemAction'
+import { handleGetPostagemCB } from '../Actions/PostagemAction'
 
 /* Bootstrap */
 import Card from 'react-bootstrap/Card'
+
+/* Util */
+import Funcoes from '../Util/Funcoes'
 
 class DetalhePostagemView extends Component {
 
@@ -27,7 +30,11 @@ class DetalhePostagemView extends Component {
     this.props.dispatch(handleGetComentario(this.props.match.params.postId))
 
     // Consulta na api a postagem requisitada.
-    this.props.dispatch(handleGetPostagem(this.props.match.params.postId))
+    this.props.dispatch(handleGetPostagemCB(this.props.match.params.postId, () => {
+      if (Funcoes.ehVazio(this.props.postagem)) {
+        this.props.history.push('/404')
+      }
+    }))
   }
 
   RenderizarEstatistica = (icone, conteudo) => {
