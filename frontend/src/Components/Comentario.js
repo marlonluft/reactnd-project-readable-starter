@@ -13,6 +13,9 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
+/* Actions */
+import { handleDeleteComentario, handleAtualizarComentario } from '../Actions/ComentarioAction'
+
 class Comentario extends Component {
 
     state = {
@@ -36,7 +39,7 @@ class Comentario extends Component {
             alert('Favor informar um comentário entre 5 a 300 caracteres.');
         }
         else {
-            this.props.onUpdate(novoComentario, comentarioId)
+            this.onUpdate(novoComentario, comentarioId)
 
             this.setState({
                 editMode: false
@@ -56,10 +59,21 @@ class Comentario extends Component {
         })
     }
 
+    onUpdate = (novoComentario, comentarioId) => {
+        this.props.dispatch(handleAtualizarComentario(novoComentario, +new Date, comentarioId))
+    }
+
+    onDelete = (comentario) => {
+        var resposta = window.confirm("Confirma a exclusão do comentário?")
+        if (resposta === true) {
+            this.props.dispatch(handleDeleteComentario(comentario))
+        }
+    }
+
 
     render() {
 
-        const { comentario, onDelete } = this.props
+        const { comentario } = this.props
         const { editMode, novoComentario } = this.state
 
         return (
@@ -95,7 +109,7 @@ class Comentario extends Component {
                                 (
                                     <span>
                                         <Button className="margemLeft" onClick={() => this.onEdit()} variant="outline-primary"><i className="fas fa-pen"></i></Button>
-                                        <Button className="margemLeft" onClick={() => onDelete(comentario)} variant="outline-danger"><i className="fas fa-trash-alt"></i></Button>
+                                        <Button className="margemLeft" onClick={() => this.onDelete(comentario)} variant="outline-danger"><i className="fas fa-trash-alt"></i></Button>
                                     </span>
                                 )
                         }
