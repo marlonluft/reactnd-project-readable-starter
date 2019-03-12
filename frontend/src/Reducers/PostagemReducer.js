@@ -35,9 +35,11 @@ export function PostagensReducer(state = [], action) {
     case POST_POSTAGEM:
       return state.map((post) => {
         if (post.id === action.id) {
-          post.voteScore = post.voteScore + (action.acrescentar ? 1 : -1);
+          return {
+            ...post,
+            voteScore: post.voteScore + (action.acrescentar ? 1 : -1)
+          }
         }
-
         return post;
       })
     case SORT_POSTAGENS:
