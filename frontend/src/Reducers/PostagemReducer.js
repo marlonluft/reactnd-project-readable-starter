@@ -56,7 +56,7 @@ export function PostagensReducer(state = [], action) {
           return postagemA[action.coluna] > postagemB[action.coluna] ? -1 : postagemA[action.coluna] < postagemB[action.coluna] ? 1 : 0
         }
       })
-      
+
       state = lista
 
       return state;
@@ -72,17 +72,26 @@ export function PostagemReducer(state = [], action) {
       return action.postagem
     case ADD_COMENTARIO:
       if (state.id === action.comentario.parentId) {
-        state.commentCount = state.commentCount + 1;
+        return {
+          ...state,
+          commentCount: state.commentCount + 1
+        }
       }
       return state;
     case REMOVE_COMENTARIO:
       if (state.id === action.parentId) {
-        state.commentCount = state.commentCount - 1;
+        return {
+          ...state,
+          commentCount: state.commentCount - 1
+        }
       }
       return state;
     case POST_POSTAGEM:
       if (state.id === action.id) {
-        state.voteScore = state.voteScore + (action.acrescentar ? 1 : -1);
+        return {
+          ...state,
+          voteScore: state.voteScore + (action.acrescentar ? 1 : -1)
+        }
       }
       return state;
     default:
