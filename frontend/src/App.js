@@ -1,5 +1,5 @@
 /* React */
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 /* Views */
@@ -11,27 +11,23 @@ import NaoEncontradoView from './Views/NaoEncontradoView.js'
 /* Bootstrap */
 import Container from 'react-bootstrap/Container'
 
-class App extends Component {
-
-  render() {
-
-    return (
-      /* Mapeamente de rotas da aplicação */
-      <Container>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path='/404' component={NaoEncontradoView} />
-            <Route exact path='/cadastrar' component={CadastrarEditarPostagemView} />
-            <Route exact path='/editar/:id' component={CadastrarEditarPostagemView} />
-            <Route exact path='/:categoria' component={ListagemPostagemView} />
-            <Route exact path='/:categoria/:postId' component={DetalhePostagemView} />
-            <Route exact path='/' component={ListagemPostagemView} />
-            <Route component={NaoEncontradoView} />
-          </Switch>
-        </BrowserRouter>
-      </Container>
-    );
-  }
+function App() {
+  return (
+    /* Mapeamente de rotas da aplicação */
+    <Container>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/404' component={NaoEncontradoView} />
+          <Route exact path='/cadastrar' component={CadastrarEditarPostagemView} />
+          <Route exact path='/editar/:id' component={CadastrarEditarPostagemView} />
+          <Route exact path='/:categoria' component={ListagemPostagemView} />
+          <Route exact path='/:categoria/:postId' component={DetalhePostagemView} />
+          <Route exact path='/' component={ListagemPostagemView} />
+          <Route component={NaoEncontradoView} />
+        </Switch>
+      </BrowserRouter>
+    </Container>
+  );
 }
 
 export default App
