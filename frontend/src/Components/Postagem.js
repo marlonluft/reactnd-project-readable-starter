@@ -21,6 +21,8 @@ function Postagem(props) {
             </td>
             <td>{props.postagem.title}</td>
             <td>{props.postagem.voteScore}</td>
+            <td>{props.postagem.author}</td>
+            <td>{props.postagem.commentCount}</td>
             <td><Moment date={props.postagem.timestamp} format="DD/MM/YYYY HH:mm:ss" /></td>
             <td>
                 <Link to={'/' + props.postagem.category + '/' + props.postagem.id}><Button variant="outline-info"><i className="fas fa-info"></i></Button></Link>

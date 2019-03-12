@@ -21,6 +21,8 @@ class ListagemPostagens extends Component {
                             <th>&nbsp;</th>
                             <th>Titulo</th>
                             <th>Score</th>
+                            <th>Autor</th>
+                            <th>Qtd de Comentários</th>
                             <th>Data de Criação</th>
                             <th>&nbsp;</th>
                         </tr>
@@ -29,7 +31,7 @@ class ListagemPostagens extends Component {
                         {
                             (lista === null || typeof lista === 'undefined' || lista.length === 0) ? (
                                 <tr>
-                                    <td colSpan="5">Nenhuma postagem disponível</td>
+                                    <td colSpan="7">Nenhuma postagem disponível</td>
                                 </tr>) : (
                                     lista.map((postagem) => (
                                         <Postagem key={postagem.id} postagem={postagem} dispatch={this.props.dispatch} history={this.props.history} />
