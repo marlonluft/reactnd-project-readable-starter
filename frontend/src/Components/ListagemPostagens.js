@@ -18,13 +18,13 @@ class ListagemPostagens extends Component {
                 <Table striped bordered hover size="sm">
                     <thead>
                         <tr>
-                            <th>&nbsp;</th>
+                            <th style={{width: '7%'}}>&nbsp;</th>
                             <th>Titulo</th>
                             <th>Score</th>
                             <th>Autor</th>
                             <th>Qtd de Comentários</th>
                             <th>Data de Criação</th>
-                            <th>&nbsp;</th>
+                            <th style={{width: '20%'}}>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
