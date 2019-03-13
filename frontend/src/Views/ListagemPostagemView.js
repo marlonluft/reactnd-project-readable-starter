@@ -21,13 +21,13 @@ class ListagemPostagemView extends Component {
 
     componentDidMount() {
         // Realiza a busca dos dados para preenchimento da tela, listagem de psotagens e de categorias
-        this.props.dispatch(handleInitialData(this.props.match.params.categoria || null))
+        this.props.onLoad()
     }
 
     filtar = (ordem, coluna) => {
         // Realiza o filtro da listagem de postagens
         let ordemCrescente = ordem === "0"
-        this.props.dispatch(handleSortPostagens(ordemCrescente, coluna))
+        this.props.filtrarPostagem(ordemCrescente, coluna)
         this.forceUpdate()
     }
 
@@ -47,13 +47,13 @@ class ListagemPostagemView extends Component {
             <div>
                 <h2>{this.props.match.params.categoria || 'Todas Categorias'}</h2>
                 <Row>
-                    <Col sm={8}>                        
+                    <Col sm={8}>
                         <ListagemPostagens lista={this.props.postagens} dispatch={this.props.dispatch} history={this.props.history} />
                     </Col>
                     <Col sm={4}>
                         <NovaPostagem />
                         <FiltroPostagens dispatch={this.props.dispatch} filtar={this.filtar} />
-                        <ListagemCategorias lista={this.props.categorias} route={this.props.location.pathname.toUpperCase()} alterarCategoria={this.alterarCategoria}/>
+                        <ListagemCategorias lista={this.props.categorias} route={this.props.location.pathname.toUpperCase()} alterarCategoria={this.alterarCategoria} />
                     </Col>
                 </Row>
             </div>
@@ -61,7 +61,19 @@ class ListagemPostagemView extends Component {
     }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        onLoad: () => {
+            dispatch(handleInitialData(ownProps.match.params.categoria || null))
+        },
+        filtrarPostagem: (ordemCrescente, coluna) => {
+            dispatch(handleSortPostagens(ordemCrescente, coluna))
+        }
+    }
+}
+
 export default connect((state) => ({
     postagens: state.postagens,
     categorias: state.categorias
-}))(ListagemPostagemView)
+}), mapDispatchToProps)
+    (ListagemPostagemView)
