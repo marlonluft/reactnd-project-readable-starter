@@ -5,19 +5,16 @@ import { Link } from 'react-router-dom'
 /* Bootstrap */
 import Button from 'react-bootstrap/Button'
 
-/* Actions */
-import { handleDeletePostagem } from '../Actions/PostagemAction'
-
 class EditarRemoverPostagem extends Component {
 
     onDelete = (postagem) => {
         var resposta = window.confirm("Confirma a exclusão da postagem '" + postagem.title + "'?")
         if (resposta === true) {
-            this.props.dispatch(handleDeletePostagem(postagem, () => {
+            this.props.deletePostagem(postagem, () => {
                 // volta para a página inicial
                 this.props.history.push('/')
                 this.props.history.go()
-            }))
+            })
         }
     }
 

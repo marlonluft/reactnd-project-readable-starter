@@ -1,9 +1,6 @@
 /* React */
 import React, { Component } from 'react'
 
-/* Actions */
-import { handleAddComentario } from '../Actions/ComentarioAction'
-
 /* CSS */
 import '../Style/Comentario.css'
 
@@ -33,7 +30,7 @@ class NovoComentario extends Component {
             alert('Favor informar um comentário entre 5 a 300 caracteres.');
         }
         else {
-            this.props.dispatch(handleAddComentario({
+            this.props.addComentario({
                 timestamp: +new Date,
                 body: comentario,
                 author: nome,
@@ -44,7 +41,7 @@ class NovoComentario extends Component {
                     nome: '',
                     comentario: ''
                 })
-            }))
+            })
         }
     }
 

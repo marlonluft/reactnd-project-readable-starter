@@ -17,7 +17,12 @@ class ListagemComentarios extends Component {
                         <li className="mdl-list__item mdl-list__item--three-line">Nenhum comentário</li>
                     ) : (
                             lista.map((comentario) => (
-                                <Comentario key={comentario.id} comentario={comentario} dispatch={this.props.dispatch} dispatch={this.props.dispatch} />
+                                <Comentario
+                                    key={comentario.id}
+                                    comentario={comentario}
+                                    onVote={this.props.onVote}
+                                    atualizarComentario={this.props.atualizarComentario}
+                                    deletarComentario={this.props.deletarComentario} />
                             ))
                         )
                 }

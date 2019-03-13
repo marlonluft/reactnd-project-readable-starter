@@ -18,13 +18,13 @@ class ListagemPostagens extends Component {
                 <Table striped bordered hover size="sm">
                     <thead>
                         <tr>
-                            <th style={{width: '7%'}}>&nbsp;</th>
+                            <th style={{ width: '7%' }}>&nbsp;</th>
                             <th>Titulo</th>
                             <th>Score</th>
                             <th>Autor</th>
                             <th>Qtd de Comentários</th>
                             <th>Data de Criação</th>
-                            <th style={{width: '20%'}}>&nbsp;</th>
+                            <th style={{ width: '20%' }}>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +34,7 @@ class ListagemPostagens extends Component {
                                     <td colSpan="7">Nenhuma postagem disponível</td>
                                 </tr>) : (
                                     lista.map((postagem) => (
-                                        <Postagem key={postagem.id} postagem={postagem} dispatch={this.props.dispatch} history={this.props.history} />
+                                        <Postagem key={postagem.id} postagem={postagem} onVote={this.props.onVote} deletePostagem={this.props.deletePostagem} history={this.props.history} />
                                     ))
                                 )
                         }

@@ -10,7 +10,8 @@ import NovaPostagem from '../Components/NovaPostagem.js'
 
 /* Actions */
 import { handleInitialData } from '../Actions/CompartilhadoAction'
-import { handleSortPostagens } from '../Actions/PostagemAction'
+import { handleSortPostagens, handlePostPostagem, handleDeletePostagem } from '../Actions/PostagemAction'
+import { handlePostComentario } from '../Actions/ComentarioAction'
 
 /* Bootstrap */
 import Row from 'react-bootstrap/Row'
@@ -48,7 +49,7 @@ class ListagemPostagemView extends Component {
                 <h2>{this.props.match.params.categoria || 'Todas Categorias'}</h2>
                 <Row>
                     <Col sm={8}>
-                        <ListagemPostagens lista={this.props.postagens} dispatch={this.props.dispatch} history={this.props.history} />
+                        <ListagemPostagens lista={this.props.postagens} onVote={this.props.onVote} deletePostagem={this.props.deletePostagem} history={this.props.history} />
                     </Col>
                     <Col sm={4}>
                         <NovaPostagem />
@@ -68,6 +69,21 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         filtrarPostagem: (ordemCrescente, coluna) => {
             dispatch(handleSortPostagens(ordemCrescente, coluna))
+        },
+        onVote: (acrescentar, id, ehPostagem, onUpdate) => {
+            if (ehPostagem) {
+                dispatch(handlePostPostagem(acrescentar, id))
+            }
+            else {
+                dispatch(handlePostComentario(acrescentar, id))
+            }
+    
+            if (typeof onUpdate === 'function') {
+                onUpdate()
+            }
+        },
+        deletePostagem: (postagem, callBack) => {
+            dispatch(handleDeletePostagem(postagem, callBack))
         }
     }
 }

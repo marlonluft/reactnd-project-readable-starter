@@ -29,30 +29,28 @@ class CadastrarEditarPostagemView extends Component {
   }
 
   componentDidMount() {
-    // Consulta as categorias para popular o dropdown de categorias
-    this.props.dispatch(handleGetCategorias(() => {
+    var callBackCategorias = () => {
       this.setState({
         category: this.state.category === '' ? this.props.categorias[0].name : this.state.category
       })
-    }))
+    };
 
-    // Caso o id esteja definido, então é a alterção de uma postagem e consulta a mesma na api
-    if (typeof this.props.match.params.id !== 'undefined') {
-      this.props.dispatch(handleGetPostagemCB(this.props.match.params.id, () => {
-        if (Funcoes.ehVazio(this.props.postagem)) {
-          this.props.history.push('/404')
-        }
-        else {
-          this.setState({
-            id: this.props.postagem.id,
-            title: this.props.postagem.title,
-            author: this.props.postagem.author,
-            body: this.props.postagem.body,
-            category: this.props.postagem.category
-          })
-        }
-      }))
-    }
+    var callBackPostagem = () => {
+      if (Funcoes.ehVazio(this.props.postagem)) {
+        this.props.history.push('/404')
+      }
+      else {
+        this.setState({
+          id: this.props.postagem.id,
+          title: this.props.postagem.title,
+          author: this.props.postagem.author,
+          body: this.props.postagem.body,
+          category: this.props.postagem.category
+        })
+      }
+    };
+
+    this.props.onLoad(callBackCategorias, callBackPostagem)
   }
 
   onTituloChange = (novoTitulo) => {
@@ -103,9 +101,9 @@ class CadastrarEditarPostagemView extends Component {
           id: id
         }
 
-        this.props.dispatch(handleAddPostagem(objeto, () => {
+        this.props.addPostagem(objeto, () => {
           this.props.history.goBack()
-        }))
+        })
       }
       else {
         var objeto = {
@@ -114,9 +112,9 @@ class CadastrarEditarPostagemView extends Component {
           id: id
         }
 
-        this.props.dispatch(handleAtualizarPostagem(objeto, () => {
+        this.props.atualizarPostagem(objeto, () => {
           this.props.history.goBack()
-        }))
+        })
       }
     }
   }
@@ -167,7 +165,28 @@ class CadastrarEditarPostagemView extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onLoad: (callBackCategorias, callBackPostagem) => {
+      // Consulta as categorias para popular o dropdown de categorias
+      dispatch(handleGetCategorias(callBackCategorias))
+
+      // Caso o id esteja definido, então é a alterção de uma postagem e consulta a mesma na api
+      if (typeof ownProps.match.params.id !== 'undefined') {
+        dispatch(handleGetPostagemCB(ownProps.match.params.id, callBackPostagem))
+      }
+    },
+    addPostagem: (objeto, callBack) => {
+      dispatch(handleAddPostagem(objeto, callBack))
+    },
+    atualizarPostagem: (objeto, callBack) => {
+      dispatch(handleAtualizarPostagem(objeto, callBack))
+    }
+  }
+}
+
 export default connect((state) => ({
   categorias: state.categorias,
   postagem: state.postagem
-}))(CadastrarEditarPostagemView)
+}), mapDispatchToProps)
+  (CadastrarEditarPostagemView)

@@ -17,7 +17,7 @@ function Postagem(props) {
     return (
         <tr>
             <td>
-                <Votacao id={props.postagem.id} ehPostagem={true} dispatch={props.dispatch} />
+                <Votacao id={props.postagem.id} ehPostagem={true} onVote={props.onVote} />
             </td>
             <td>{props.postagem.title}</td>
             <td>{props.postagem.voteScore}</td>
@@ -26,7 +26,7 @@ function Postagem(props) {
             <td><Moment date={props.postagem.timestamp} format="DD/MM/YYYY HH:mm:ss" /></td>
             <td>
                 <Link to={'/' + props.postagem.category + '/' + props.postagem.id}><Button variant="outline-info"><i className="fas fa-info"></i></Button></Link>
-                <EditarRemoverPostagem postagem={props.postagem} dispatch={props.dispatch} history={props.history} />
+                <EditarRemoverPostagem postagem={props.postagem} deletePostagem={props.deletePostagem} history={props.history} />
             </td>
         </tr>
     )

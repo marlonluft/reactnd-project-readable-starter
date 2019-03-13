@@ -13,9 +13,6 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
-/* Actions */
-import { handleDeleteComentario, handleAtualizarComentario } from '../Actions/ComentarioAction'
-
 class Comentario extends Component {
 
     state = {
@@ -60,13 +57,13 @@ class Comentario extends Component {
     }
 
     onUpdate = (novoComentario, comentarioId) => {
-        this.props.dispatch(handleAtualizarComentario(novoComentario, +new Date, comentarioId))
+        this.props.atualizarComentario(novoComentario, +new Date, comentarioId)
     }
 
     onDelete = (comentario) => {
         var resposta = window.confirm("Confirma a exclusão do comentário?")
         if (resposta === true) {
-            this.props.dispatch(handleDeleteComentario(comentario))
+            this.props.deletarComentario(comentario)
         }
     }
 
@@ -94,7 +91,7 @@ class Comentario extends Component {
                         <span className="card-subtitulo margemLeft dataComentario"><Moment date={comentario.timestamp} format="DD/MM/YYYY HH:mm:ss" /></span>
                     </Card.Subtitle>
                     <div style={{ display: 'inline-block' }}>
-                        <Votacao id={comentario.id} ehPostagem={false} dispatch={this.props.dispatch} />
+                        <Votacao id={comentario.id} ehPostagem={false} onVote={this.props.onVote} />
                         <b className="margemLeft">{comentario.voteScore}</b>
                     </div>
 
