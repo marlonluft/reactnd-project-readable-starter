@@ -52,7 +52,7 @@ class ListagemPostagemView extends Component {
                     </Col>
                     <Col sm={4}>
                         <NovaPostagem />
-                        <FiltroPostagens dispatch={this.props.dispatch} filtar={this.filtar} />
+                        <FiltroPostagens filtar={this.filtar} />
                         <ListagemCategorias lista={this.props.categorias} route={this.props.location.pathname.toUpperCase()} alterarCategoria={this.alterarCategoria} />
                     </Col>
                 </Row>
