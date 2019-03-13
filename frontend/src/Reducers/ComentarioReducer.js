@@ -18,9 +18,11 @@ export default function ComentarioReducer(state = [], action) {
     case POST_COMENTARIO:
       return state.map((comentario) => {
         if (comentario.id === action.id) {
-          comentario.voteScore = comentario.voteScore + (action.acrescentar ? 1 : -1);
+          return {
+            ...comentario,
+            voteScore: comentario.voteScore + (action.acrescentar ? 1 : -1)
+          }
         }
-
         return comentario;
       })
     case PUT_COMENTARIO:
