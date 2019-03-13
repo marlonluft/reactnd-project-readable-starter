@@ -16,9 +16,6 @@ import {
   RECEIVE_DATA
 } from '../Actions/CompartilhadoAction'
 
-/* Util */
-import Funcoes from '../Util/Funcoes'
-
 export function PostagensReducer(state = [], action) {
   switch (action.type) {
     case ADD_POSTAGEM:
@@ -46,7 +43,7 @@ export function PostagensReducer(state = [], action) {
         return post;
       })
     case SORT_POSTAGENS:
-      var lista = Funcoes.clonarObjeto(state)
+      let lista = [...state]
 
       lista.sort((postagemA, postagemB) => {
         if (action.ordemCrescente) {
